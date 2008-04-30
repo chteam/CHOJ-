@@ -68,17 +68,17 @@ namespace ChswordOJ {
 				IsTempExists(u.TextPath, u.CompilerString);//是否编译完成
 				if (0 == _AnswerId)
 					return;
-				cp.SetAnswerStatus(_AnswerId, Option.AnswerStatus.编译中);
+				cp.SetAnswerStatus(_AnswerId, Option.AnswerStatus.Compiling);
 				//编译完成
 				if (IsCompilerSucess(u.TextPath, u.CodePath, u.ExePath, 0)) {//编译产生EXE则编译成功
 					//编译成功
-					cp.SetAnswerStatus(_AnswerId, Option.AnswerStatus.测试中);
+					cp.SetAnswerStatus(_AnswerId, Option.AnswerStatus.Running);
 					ThreadStart thr_start_func = new ThreadStart(Test);//异步调用Test进行测试
 					Thread fThread = new Thread(thr_start_func);
 					fThread.Name = "Test";
 					fThread.Start();
 					Thread.Sleep(_Time * 2000);//初始化最大超时时间(规定时间的2倍)
-					if (Option.AnswerStatus.测试通过 == _TestResult) {
+					if (Option.AnswerStatus.Accepted == _TestResult) {
 						//cp.SetAnswerStatus(_AnswerId, Compiler.AnswerStatus.测试通过);
 					}
 					else {
@@ -89,13 +89,13 @@ namespace ChswordOJ {
 									if (!_process.CloseMainWindow())
 										_process.Kill();
 									if (_TestFile_Output.ToString().StartsWith(_TestOutput.ToString()))
-										_TestResult = Option.AnswerStatus.超时;
+										_TestResult = Option.AnswerStatus.TimeLimitExceed;
 									else
-										_TestResult = Option.AnswerStatus.测试失败;
+										_TestResult = Option.AnswerStatus.WrongAnswer;
 								}
 							}
 							catch {
-								_TestResult = Option.AnswerStatus.测试失败;
+								_TestResult = Option.AnswerStatus.WrongAnswer;
 							}
 
 						}
@@ -103,12 +103,12 @@ namespace ChswordOJ {
 					}
 				}
 				else {
-					_TestResult = Option.AnswerStatus.编译失败;
+					_TestResult = Option.AnswerStatus.CompileError;
 					cp.SetAnswerText(_AnswerId, ReplaceFileName(_CompilerText.ToString()));
 				}
 
 				try {
-					if (_TestResult == Option.AnswerStatus.测试中 || _TestResult == Option.AnswerStatus.测试失败) {
+					if (_TestResult == Option.AnswerStatus.Running || _TestResult == Option.AnswerStatus.WrongAnswer) {
 						Process[] p = Process.GetProcessesByName(_Sign);
 						if (p.Length > 0) {
 							if (!p[0].HasExited) {
@@ -121,16 +121,16 @@ namespace ChswordOJ {
 								}
 							}
 							if (_TestFile_Output.ToString().StartsWith(_TestOutput.ToString()))
-								_TestResult = Option.AnswerStatus.超时;
+								_TestResult = Option.AnswerStatus.TimeLimitExceed;
 							else
-								_TestResult = Option.AnswerStatus.测试失败;
+								_TestResult = Option.AnswerStatus.WrongAnswer;
 						}
 					}
 				}
 				catch { }
 			}
 			else {
-				_TestResult = Option.AnswerStatus.危险代码;
+				_TestResult = Option.AnswerStatus.DangerCode;
 			}
 
 			cp.SetAnswerStatus(_AnswerId, _TestResult);//写入测试结果
@@ -201,9 +201,9 @@ namespace ChswordOJ {
 		private void Process_Exited(object sender, EventArgs e) {//测试程序是否超时的判断
 			if (_process.TotalProcessorTime.Milliseconds > _Time*1000) {
 				if (_TestFile_Output.ToString().StartsWith(_TestOutput.ToString()))
-					_TestResult = Option.AnswerStatus.超时;
+					_TestResult = Option.AnswerStatus.TimeLimitExceed;
 				else
-					_TestResult = Option.AnswerStatus.测试失败;
+					_TestResult = Option.AnswerStatus.WrongAnswer;
 			}
 		}
 		private void Test() {//进行测试
@@ -253,18 +253,18 @@ namespace ChswordOJ {
 			else
 				f = false;
 			if (_TestEnd && f)
-				_TestResult = Option.AnswerStatus.测试通过;
+				_TestResult = Option.AnswerStatus.Accepted;
 			else {
 
 			}
 			if (_TestEnd && (_myMemory > _Memory))//内存消耗太大
 			{
-				_TestResult = Option.AnswerStatus.内存超量;
+				_TestResult = Option.AnswerStatus.MemoryLimitExceed;
 			}
 			_process.Close();
 			_process.Dispose();
 			if (f && _TestEnd) {
-				_TestResult = Option.AnswerStatus.测试通过;
+				_TestResult = Option.AnswerStatus.Accepted;
 			}
 			return;
 

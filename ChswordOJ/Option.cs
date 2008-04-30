@@ -15,45 +15,45 @@ namespace ChswordOJ {
 		/// </summary>
 		public enum AnswerStatus {
 			/// <summary>
-			/// 未提交。
+			/// 排队中。
 			/// </summary>
-			未提交 = 0,
+			Queuing = 0,
 			/// <summary>
 			/// 已提交。
 			/// </summary>
-			已提交 = 10,
+			Uploading = 10,
 			/// <summary>
 			/// 正在编译。
 			/// </summary>
-			编译中 = 20,
+			Compiling = 20,
 			/// <summary>
 			/// 测试中。
 			/// </summary>
-			测试中 = 30,
+			Running = 30,
 			/// <summary>
 			/// 超时。
 			/// </summary>
-			超时 = 40,
+			TimeLimitExceed = 40,
 			/// <summary>
 			/// 测试失败。
 			/// </summary>
-			测试失败 = 50,
+			WrongAnswer = 50,
 			/// <summary>
 			/// 内存超出限制。
 			/// </summary>
-			内存超量 = 60,
+			MemoryLimitExceed = 60,
 			/// <summary>
 			/// 编译失败。
 			/// </summary>
-			编译失败 = 70,
+			CompileError = 70,
 			/// <summary>
 			/// 危险代码。
 			/// </summary>
-			危险代码 = 80,
+			DangerCode = 80,
 			/// <summary>
 			/// 测试通过。
 			/// </summary>
-			测试通过 = 99,
+			Accepted = 99,
 		}
 		/// <summary>
 		/// 构造函数
