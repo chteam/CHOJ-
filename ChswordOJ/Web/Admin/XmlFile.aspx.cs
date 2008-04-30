@@ -12,7 +12,7 @@ using System.Xml;
 
 public partial class Admin_XmlFile : System.Web.UI.Page {
 	protected void Page_Load(object sender, EventArgs e) {
-
+		this.Title = string.Format("Config of '{0}' file", Request.QueryString["file"]);
 	}
 	protected String GetList() {
 		StringBuilder sb = new StringBuilder("<div><ul>");
@@ -21,6 +21,8 @@ public partial class Admin_XmlFile : System.Web.UI.Page {
 			fn = "Config";
 		else
 			fn = Request.QueryString["file"].ToString();
+
+		
 		XmlDocument dom = new XmlDocument();
 		dom.Load(Server.MapPath(String.Format("~/xml/{0}.Xml", fn)));
 		XmlNodeList nodeList = dom.SelectSingleNode(fn).ChildNodes;
