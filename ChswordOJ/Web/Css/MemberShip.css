@@ -1,0 +1,17 @@
+﻿.Login{
+	border-color:#E6E2D8;
+	border-width:1px;
+	border-style:Solid;
+	color:#333333;
+	width:250px;
+	}
+.Login ul{
+	margin:0px;
+	list-style-type:none;
+}
+.Login h4{
+	color:White;
+	background-color:#5D7B9D;
+	font-weight:bold;
+	text-align:center
+}

@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage"
+    EnableViewState="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <%=GetConfig("Title")%>
+    </title>
+    <link href="Css/Css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="Aspnet" runat="server">
+        <div>
+            <div style="float: right;">
+                <asp:LoginView ID="LoginView" runat="server">
+                    <LoggedInTemplate>
+                        <%=GetConfig("Hello") + Page.User.Identity.Name%>
+                        <a href="ChangePassWord.aspx">
+                            <%=GetConfig("ChangePassword")%>
+                        </a>
+                    </LoggedInTemplate>
+                    <AnonymousTemplate>
+                        <a href="Reg.aspx">
+                            <%=GetConfig("Register")%>
+                        </a>
+                    </AnonymousTemplate>
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="Admin">
+                            <ContentTemplate>
+                                <%=GetConfig("Hello") + Page.User.Identity.Name%>
+                                <a href="ChangePassWord.aspx">
+                                    <%=GetConfig("ChangePassword")%>
+                                </a><a href="admin/default.aspx">
+                                    <%=GetConfig("Manage")%>
+                                </a><a href="admin/cache.aspx">清理缓存</a>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
+                </asp:LoginView>
+                <asp:LoginStatus ID="LoginStatus" runat="server" />
+                <a href="help.aspx">
+                    <%=GetConfig("Help")%>
+                </a>
+            </div>
+            <h1>
+                <%=GetConfig("WebSiteName")%>
+            </h1>
+        </div>
+        <hr />
+        <asp:SiteMapPath runat="server" PathSeparator="&gt;" EnableViewState="false" SkipLinkText="" />
+        <div>
+            <asp:ContentPlaceHolder ID="Content" runat="server" />
+        </div>
+        <%=GetConfig("Floor")%>
+    </form>
+</body>
+</html>

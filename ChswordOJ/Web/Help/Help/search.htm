@@ -1,0 +1,457 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<style>
+html,body { width:100%;height:100%;padding:0px;margin:0px;background-color:ButtonFace;font-family:Arial;font-size:12px; }
+img { border:0px; }
+table { font-size:12px; }
+</style>
+</head>
+<script type="text/javascript" src="filenames.js"></script>
+<script id="SearchJS" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+var CurrentTabIndex = 0;
+var SearchKeywords = undefined;
+var SearchResults = new Array(0);
+var MaxSearchResults = 250;
+function SelectContents()
+{
+  if (CurrentTabIndex == 0)
+    return;
+  CurrentTabIndex = 0;
+  var lelement = document.getElementById("ImgContents");
+  lelement.src="ContentsSelected.png";
+  lelement.style["cursor"] = "arrow";
+  lelement = document.getElementById("Content");
+  lelement.style["display"] = "block";
+  lelement = document.getElementById("ImgSearch");
+  lelement.src="SearchUnselected.png";
+  lelement.style["cursor"] = "hand";
+  lelement = document.getElementById("Search");
+  lelement.style["display"] = "none";
+  window.parent.CONTENT.location = window.parent.CONTENT.location;
+}
+function SelectSearch()
+{
+  if (CurrentTabIndex == 1)
+    return;
+  CurrentTabIndex = 1;
+  var lelement = document.getElementById("ImgContents");
+  lelement.src="ContentsUnselected.png";
+  lelement.style["cursor"] = "hand";
+  lelement = document.getElementById("Content");
+  lelement.style["display"] = "none";
+  lelement = document.getElementById("ImgSearch");
+  lelement.src="SearchSelected.png";
+  lelement.style["cursor"] = "arrow";
+  if (window.SearchDataLoaded != undefined)
+    SelectSearch2();
+  else
+  {
+    lelement = document.getElementById("SearchLoading");
+    lelement.style["display"] = "block";
+    var lscript = document.getElementById("SearchJS");
+    lscript.src = "search.js";
+    SelectSearchLoading();
+  }
+}
+function SelectSearchLoading()
+{
+  if (window.SearchDataLoaded != undefined)
+    SelectSearch2();
+  else
+    setTimeout("SelectSearchLoading();", 1000);
+}
+function SelectSearch2()
+{
+  var lelement = document.getElementById("SearchLoading");
+  lelement.style["display"] = "none";
+  lelement = document.getElementById("Search");
+  lelement.style["display"] = "block";
+  window.parent.CONTENT.location = window.parent.CONTENT.location;
+}
+function SearchTextKeyPress(evt)
+{
+  var charCode = (evt.which) ? evt.which : event.keyCode
+  if (charCode == 13)
+    DoSearch();
+
+  return true;
+}
+function DoSearch()
+{
+  var lsearchTxt = document.getElementById("SearchText").value.toLowerCase();
+  var lsearchResults = document.getElementById("SearchResults");
+  var i;
+  var lsearchArray = new Array(lsearchTxt.length);
+  var lsearchArrayIndex = 0;
+  var lsearchWord = "";
+  for(i = 0;i<lsearchTxt.length;i++)
+  {
+    if ((lsearchTxt.substr(i,1)>="a") && (lsearchTxt.substr(i,1)<="z"))
+    {
+      lsearchWord += lsearchTxt.substr(i,1);
+    }
+    else
+    {
+      if (lsearchWord != "")
+      {
+        lsearchArray[lsearchArrayIndex] = lsearchWord;
+        lsearchArrayIndex++;
+        lsearchWord = "";
+      }
+    }
+  }  
+  if (lsearchWord != "")
+  {
+    lsearchArray[lsearchArrayIndex] = lsearchWord;
+    lsearchArrayIndex++;
+  }
+  
+  SearchKeywords = new Array(lsearchArrayIndex);
+  for (i = 0;i<lsearchArrayIndex;i++)
+    SearchKeywords[i] = lsearchArray[i];
+  
+  var j;
+  var k = undefined;
+  for (j = 0;j<lsearchArrayIndex;j++)
+  {
+    k = undefined;
+    for (i=0;i<SearchWords.length;i+=2)
+    {
+      if (SearchWords[i] == lsearchArray[j])
+      {
+        lsearchArray[j] = i;
+        k = 0;
+        break;
+      }
+    }
+    if (k == undefined)
+      break;
+  }
+  
+  if (k == undefined)
+    SearchResults = new Array(0);
+  else
+  { 
+    j = 0;
+    for(i=0;i<lsearchArrayIndex;i++)
+      if (SearchWords[lsearchArray[i]+1].length>MaxSearchResults)
+        j += MaxSearchResults;
+      else
+        j += SearchWords[lsearchArray[i]+1].length;
+      
+    var ltempSearchResult = new Array(j);
+    k = 0;
+    var l;
+    var lfound;
+    for(i=0;i<lsearchArrayIndex;i++)
+      for(j=0;(j<SearchWords[lsearchArray[i]+1].length) && (j<MaxSearchResults);j++)
+      {
+        lfound = false;        
+        for (l=0;l<k;l++)
+          if (ltempSearchResult[l] == SearchWords[lsearchArray[i]+1][j])
+          {
+            lfound = true;
+            break;
+          }
+        if (!lfound)
+        {
+          ltempSearchResult[k] = SearchWords[lsearchArray[i]+1][j];
+          k++;
+        }
+      }
+     
+    l = 0; 
+    for(i=0;i<ltempSearchResult.length;i++)
+    {
+      var m = 0;
+      for (j=0;j<lsearchArrayIndex;j++)
+      {
+        lfound = false;
+        for (k=0;k<SearchWords[lsearchArray[j]+1].length;k++)
+          if (SearchWords[lsearchArray[j]+1][k] == ltempSearchResult[i])
+          {
+            lfound = true;
+            break;
+          }
+        if (lfound)
+          m++;
+        else
+          break;
+      }
+      if (m != lsearchArrayIndex)
+        ltempSearchResult[i] = -1;
+      else
+        l++;
+    }
+    
+    SearchResults = new Array(l);
+    k=0;
+    for (j=0;j<ltempSearchResult.length;j++)
+      if (ltempSearchResult[j] != -1)
+      {
+        SearchResults[k] = ltempSearchResult[j];        
+        k++;
+      }
+  }  
+  DoShowSearchResults();
+}
+function DoShowSearchResults()
+{
+  var lhtml = "";
+  if (SearchResults.length == 0)
+  {
+  }
+  else
+  {
+    var i;
+    lhtml = "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:100%\">"; 
+    for (i=0;i<SearchResults.length;i++)
+    {
+      lhtml += "<tr><td id=\"SearchResult"+SearchResults[i]+"\" style=\"cursor:hand;width:100%\" onclick=\"javascript:DoShowFile("+SearchResults[i]+");\">"+FileTitles[SearchResults[i]]+"</td></tr>";
+    }
+    lhtml += "</table>";
+    if (SearchResults.length == MaxSearchResults)
+      lhtml += "<br/><span style=\"color:red\">Too many search results...</span><br/>";
+  }
+  var ldiv = document.getElementById("SearchResults");
+  ldiv.innerHTML = lhtml;
+  
+  ldiv = document.getElementById("DivSearchText");
+  var ltext = document.getElementById("SearchText");
+  ldiv.innerHTML = "<input id=\"SearchText\" type=\"text\" value=\""+ltext.value+"\" onkeypress=\"return SearchTextKeyPress(event)\" style=\"width:100%;height:25px\" />";
+  
+  window.parent.CONTENT.location = window.parent.CONTENT.location;
+}
+function DoShowFile(index)
+{
+  if (Filenames.length > index)
+    window.parent.CONTENT.location = Filenames[index];
+}
+function DoShowFile2(element)
+{
+  var index = element.id.substr(3)*1;
+  
+  if (LastFocusedIndex == index)
+  {  
+    var lctb = document.getElementById("CTB"+index);
+    if (lctb != undefined)
+    {
+      var lcei = document.getElementById("CEI"+index);
+      var lgri = document.getElementById("GRI"+index);
+      if (lctb.style["display"] == "none")
+      {
+        lctb.style["display"] = "block";
+        lcei.src = "Expanded.gif";
+        lgri.src = "GroupOpened.gif";
+      }
+      else
+      {
+        lctb.style["display"] = "none";
+        lcei.src = "Collapsed.gif";
+        lgri.src = "GroupClosed.gif";
+      }
+    }
+  }
+
+  if (Filenames.length > index)
+    window.parent.CONTENT.location = Filenames[index];
+}
+function DoPageLoaded(index)
+{
+  setTimeout("window.parent.SEARCH.DoPageLoaded2("+index+");", 100);
+}
+var LastFocusedIndex = -1;
+function DoPageLoaded2(index)
+{
+  DoParentExpandRecursive(index);
+  var i;
+  var lelement;
+  if (LastFocusedIndex != -1)
+  {
+    lelement = document.getElementById("SearchResult"+LastFocusedIndex);
+    if (lelement != undefined)
+      lelement.style["backgroundColor"] = "";
+    lelement = document.getElementById("CTA"+LastFocusedIndex);
+    if (lelement != undefined)
+      lelement.style["backgroundColor"] = "";
+  }
+  LastFocusedIndex = index;
+  lelement = document.getElementById("SearchResult"+index);
+  if (lelement != undefined)
+    lelement.style["backgroundColor"] = "ButtonFace";
+  lelement = document.getElementById("CTA"+index);
+  if (lelement != undefined)
+    lelement.style["backgroundColor"] = "ButtonFace";
+  
+  if (CurrentTabIndex == 1)
+    setTimeout('DoHilight()',100);
+}
+function DoHilight()
+{
+  var lflag = false;
+  if((window.parent.CONTENT.document.readyState!='complete')&&(window.parent.CONTENT.document.readyState!='loaded'))
+    setTimeout('DoHilight()',100);
+  else
+  {
+    if (SearchKeywords != undefined)
+      if (SearchKeywords.length != 0)
+      {
+        var dbody=window.parent.CONTENT.document.body;
+        for(var r=0;r<SearchKeywords.length;r++)
+        {
+          var rng=dbody.createTextRange();
+          if(rng!=null)
+          {
+            for(var i=0;i<100;i++)
+            {
+              rng.moveStart("word",1);
+              if (!rng.findText(SearchKeywords[r]))
+                break;
+              try
+              {
+                rng.pasteHTML("<span style='background-color:#FFFF00'>"+
+                rng.text+"</span>");
+              }
+              catch(error)
+              {
+                 lflag = true;
+              }
+            }
+          }
+        }
+      }
+  }
+  
+  if (lflag)
+    setTimeout('DoHilight()',100);
+}
+function DoClick(element)
+{
+  var index = element.id.substr(3)*1;
+  var lctb = document.getElementById("CTB"+index);
+  var lcei = document.getElementById("CEI"+index);
+  var lgri = document.getElementById("GRI"+index);
+  if (lctb.style["display"] == "none")
+  {
+    lctb.style["display"] = "block";
+    lcei.src = "Expanded.gif";
+    lgri.src = "GroupOpened.gif";
+  }
+  else
+  {
+    lctb.style["display"] = "none";
+    lcei.src = "Collapsed.gif";
+    lgri.src = "GroupClosed.gif";
+  }
+}
+function DoParentExpandRecursive(index)
+{
+  var lcta = window.parent.SEARCH.document.getElementById("CTA"+index);
+  if (lcta != undefined)
+  if (lcta.parentNode != undefined)
+    if (lcta.parentNode.id.substr(0,3) == "CTB")
+    {
+      var lctb = lcta.parentNode;
+      index = lctb.id.substr(3)*1;
+      var lcei = window.parent.SEARCH.document.getElementById("CEI"+index);
+      var lgri = window.parent.SEARCH.document.getElementById("GRI"+index);
+      if (lctb.style["display"] == "none")
+      {
+        lctb.style["display"] = "block";
+        lcei.src = "Expanded.gif";
+        lgri.src = "GroupOpened.gif";
+        DoParentExpandRecursive(index);        
+      }
+    }  
+}
+// -->
+</script>
+<body>
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;height:100%">
+<tr style="height:27px">
+<td style="width:8px"><img src="tp.gif" style="width:8px;height:8px" /></td>
+<td style="width:100%;vertical-align:bottom"><img src="tp.gif" style="width:4px;height:4px" /><img id="ImgContents" 
+src="ContentsSelected.png" onclick="javascript:SelectContents()" /><img src="tp.gif" style="width:4px;height:4px" /><img id="ImgSearch" 
+src="SearchUnselected.png" style="cursor:hand" onclick="javascript:SelectSearch()" /></td>
+<td style="width:8px"><img src="tp.gif" style="width:8px;height:8px" /></td>
+</tr>
+<tr style="height:100%">
+<td style="width:8px"></td>
+<td style="width:100%;vertical-align:top;background-color:#f0f0f0">
+<div id="Search" style="width:100%;height:100%;border:solid 1px black;display:none">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%;height:100%">
+  <tr>
+    <td><img src="tp.gif" style="width:8px;height:8px" /></td>
+    <td colspan="2" style="height:32px;vertical-align:middle">
+      <strong>Type in the word(s) to search for:</strong><br />
+    </td>
+    <td><img src="tp.gif" style="width:8px;height:8px" /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="width:75%;height:32px;vertical-align:top">
+    <div id="DivSearchText" style="width:100%;height:100%">
+      <input id="SearchText" type="text" onkeypress="return SearchTextKeyPress(event)" style="width:100%;height:25px" />
+    </div>  
+    </td>
+    <td style="width:25%;height:32px;vertical-align:top;text-align:right">
+   <button onclick="javascript:DoSearch()" style="width:95%;height:25px">Search</button><br />
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="2" style="width:100%;height:100%;border:solid 1px black;vertical-align:top;">
+    <div style="width:100%;height:100%;position:relative">
+    <div style="width:100%;height:100%;position:absolute;overflow:scroll">
+    <div id="SearchResults">
+    </div>
+    </div>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="4" style="width:100%;height:8px">
+    </td>
+  </tr>
+</table>
+</div>
+<div id="Content" style="width:100%;height:100%;border:solid 1px black;position:relative">
+  <div style="width:100%;height:100%;position:absolute;overflow:scroll;white-space:nowrap">
+  <div id="CTA144" style="width:100%"><img src="tp.gif" style="width:0px;height:1px" /><img id="CEI144" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI144" src="GroupClosed.gif" /> <span id="CTC144" onclick="javascript:DoShowFile2(this)" style="cursor:hand">ChswordOJ</span></div><div id="CTB144" style="width:100%;display:none"><div id="CTA161" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI161" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI161" src="GroupClosed.gif" /> <span id="CTC161" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Cache&nbsp;class</span></div><div id="CTB161" style="width:100%;display:none"><div id="CTA14" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Cache()&nbsp;constructor</div><div id="CTA0" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA74" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI74" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI74" src="GroupClosed.gif" /> <span id="CTC74" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB74" style="width:100%;display:none"><div id="CTA88" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> IsNullorEmpty(CacheName)&nbsp;method</div><div id="CTA89" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> OpenTextFile(fn)&nbsp;method</div><div id="CTA146" style="width:100%"><img src="tp.gif" style="width:48px;height:1px" /><img id="CEI146" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI146" src="GroupClosed.gif" /> <span id="CTC146" onclick="javascript:DoShowFile2(this)" style="cursor:hand">SetCache&nbsp;methods</span></div><div id="CTB146" style="width:100%;display:none"><div id="CTA90" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> SetCache(CacheName)&nbsp;method</div><div id="CTA91" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> SetCache(CacheName,&nbsp;CacheValue)&nbsp;method</div></div></div></div><div id="CTA162" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI162" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI162" src="GroupClosed.gif" /> <span id="CTC162" onclick="javascript:DoShowFile2(this)" style="cursor:hand">ChMasterPage&nbsp;class</span></div><div id="CTB162" style="width:100%;display:none"><div id="CTA15" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> ChMasterPage()&nbsp;constructor</div><div id="CTA24" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Events</div><div id="CTA26" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Fields</div><div id="CTA1" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA75" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI75" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI75" src="GroupClosed.gif" /> <span id="CTC75" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB75" style="width:100%;display:none"><div id="CTA92" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetConfig(Name)&nbsp;method</div><div id="CTA93" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetString(Str)&nbsp;method</div></div><div id="CTA150" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Properties</div></div><div id="CTA163" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI163" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI163" src="GroupClosed.gif" /> <span id="CTC163" onclick="javascript:DoShowFile2(this)" style="cursor:hand">ChPage&nbsp;class</span></div><div id="CTB163" style="width:100%;display:none"><div id="CTA16" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> ChPage()&nbsp;constructor</div><div id="CTA25" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Events</div><div id="CTA27" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Fields</div><div id="CTA2" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA76" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI76" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI76" src="GroupClosed.gif" /> <span id="CTC76" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB76" style="width:100%;display:none"><div id="CTA94" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetConfig(Name)&nbsp;method</div><div id="CTA95" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetString(Str)&nbsp;method</div><div id="CTA96" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Render(writer)&nbsp;method</div><div id="CTA97" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SetHtmlLink(cssfile)&nbsp;method</div></div><div id="CTA151" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Properties</div></div><div id="CTA164" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI164" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI164" src="GroupClosed.gif" /> <span id="CTC164" onclick="javascript:DoShowFile2(this)" style="cursor:hand">ChString&nbsp;class</span></div><div id="CTB164" style="width:100%;display:none"><div id="CTA3" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA77" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI77" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI77" src="GroupClosed.gif" /> <span id="CTC77" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB77" style="width:100%;display:none"><div id="CTA98" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetCompiler(s)&nbsp;method</div><div id="CTA147" style="width:100%"><img src="tp.gif" style="width:48px;height:1px" /><img id="CEI147" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI147" src="GroupClosed.gif" /> <span id="CTC147" onclick="javascript:DoShowFile2(this)" style="cursor:hand">GetStatus&nbsp;methods</span></div><div id="CTB147" style="width:100%;display:none"><div id="CTA99" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> GetStatus(i,&nbsp;AnswerId)&nbsp;method</div><div id="CTA100" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> GetStatus(i,&nbsp;AnswerId,&nbsp;IsAdmin)&nbsp;method</div></div><div id="CTA101" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Ratio(fz,&nbsp;fm)&nbsp;method</div><div id="CTA102" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SetQuestion(Question)&nbsp;method</div></div></div><div id="CTA165" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI165" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI165" src="GroupClosed.gif" /> <span id="CTC165" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Code&nbsp;class</span></div><div id="CTB165" style="width:100%;display:none"><div id="CTA17" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Code(fn,&nbsp;code)&nbsp;constructor</div><div id="CTA28" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI28" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI28" src="GroupClosed.gif" /> <span id="CTC28" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB28" style="width:100%;display:none"><div id="CTA35" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _code&nbsp;field</div><div id="CTA36" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _fn&nbsp;field</div></div><div id="CTA4" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA78" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI78" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI78" src="GroupClosed.gif" /> <span id="CTC78" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB78" style="width:100%;display:none"><div id="CTA103" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Check()&nbsp;method</div><div id="CTA104" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> IsMatch(str,&nbsp;Reg)&nbsp;method</div></div></div><div id="CTA166" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI166" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI166" src="GroupClosed.gif" /> <span id="CTC166" onclick="javascript:DoShowFile2(this)" style="cursor:hand">DoDataBase&nbsp;class</span></div><div id="CTB166" style="width:100%;display:none"><div id="CTA18" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> DoDataBase()&nbsp;constructor</div><div id="CTA29" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI29" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI29" src="GroupClosed.gif" /> <span id="CTC29" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB29" style="width:100%;display:none"><div id="CTA37" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _SqlCommand&nbsp;field</div><div id="CTA38" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _SqlConnection&nbsp;field</div></div><div id="CTA5" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA79" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI79" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI79" src="GroupClosed.gif" /> <span id="CTC79" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB79" style="width:100%;display:none"><div id="CTA105" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> CloseSql()&nbsp;method</div><div id="CTA106" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> DoDataSet(StoredProcedureName,&nbsp;SqlParameter)&nbsp;method</div><div id="CTA148" style="width:100%"><img src="tp.gif" style="width:48px;height:1px" /><img id="CEI148" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI148" src="GroupClosed.gif" /> <span id="CTC148" onclick="javascript:DoShowFile2(this)" style="cursor:hand">DoParameterSql&nbsp;methods</span></div><div id="CTB148" style="width:100%;display:none"><div id="CTA107" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> DoParameterSql(StoredProcedureName,&nbsp;SqlParameter)&nbsp;method</div><div id="CTA108" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> DoParameterSql(StoredProcedureName,&nbsp;SqlParameter,&nbsp;ReturnValue)&nbsp;method</div></div><div id="CTA109" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> OpenSQL(StoredProcedureName)&nbsp;method</div></div></div><div id="CTA167" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI167" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI167" src="GroupClosed.gif" /> <span id="CTC167" onclick="javascript:DoShowFile2(this)" style="cursor:hand">DoFile&nbsp;class</span></div><div id="CTB167" style="width:100%;display:none"><div id="CTA19" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> DoFile()&nbsp;constructor</div><div id="CTA30" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI30" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI30" src="GroupClosed.gif" /> <span id="CTC30" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB30" style="width:100%;display:none"><div id="CTA39" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _AnswerId&nbsp;field</div><div id="CTA40" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _CodePath&nbsp;field</div><div id="CTA41" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _CompilerName&nbsp;field</div><div id="CTA42" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _CompilerText&nbsp;field</div><div id="CTA43" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _ExePath&nbsp;field</div><div id="CTA44" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _Memory&nbsp;field</div><div id="CTA45" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _myMemory&nbsp;field</div><div id="CTA46" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _output&nbsp;field</div><div id="CTA47" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _process&nbsp;field</div><div id="CTA48" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _Sign&nbsp;field</div><div id="CTA49" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _Test&nbsp;field</div><div id="CTA50" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TestEnd&nbsp;field</div><div id="CTA51" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TestFile_Output&nbsp;field</div><div id="CTA52" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TestOutput&nbsp;field</div><div id="CTA53" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TestPath&nbsp;field</div><div id="CTA54" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TestResult&nbsp;field</div><div id="CTA55" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _TextPath&nbsp;field</div><div id="CTA56" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _Time&nbsp;field</div></div><div id="CTA6" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA80" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI80" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI80" src="GroupClosed.gif" /> <span id="CTC80" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB80" style="width:100%;display:none"><div id="CTA110" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> DeleteTempFile()&nbsp;method</div><div id="CTA111" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> DoCmd(cmd)&nbsp;method</div><div id="CTA112" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetResult(code,&nbsp;UserName,&nbsp;PassWord,&nbsp;QNum,&nbsp;CompilerName)&nbsp;method</div><div id="CTA113" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> IsCompilerSucess(TextPath,&nbsp;CppPath,&nbsp;ExePath,&nbsp;count)&nbsp;method</div><div id="CTA114" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> IsTempExists(TextPath,&nbsp;CompilerString)&nbsp;method</div><div id="CTA115" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Process_Exited(sender,&nbsp;e)&nbsp;method</div><div id="CTA116" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> ReplaceFileName(input)&nbsp;method</div><div id="CTA117" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SaveTextFile(Path,&nbsp;text)&nbsp;method</div><div id="CTA118" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Test()&nbsp;method</div><div id="CTA119" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> TestOutputHandler(sendingProcess,&nbsp;outLine)&nbsp;method</div></div></div><div id="CTA168" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI168" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI168" src="GroupClosed.gif" /> <span id="CTC168" onclick="javascript:DoShowFile2(this)" style="cursor:hand">FormFixerHtml32TextWriter&nbsp;class</span></div><div id="CTB168" style="width:100%;display:none"><div id="CTA31" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI31" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI31" src="GroupClosed.gif" /> <span id="CTC31" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB31" style="width:100%;display:none"><div id="CTA57" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _url&nbsp;field</div></div><div id="CTA20" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> FormFixerHtml32TextWriter(writer)&nbsp;constructor</div><div id="CTA7" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA81" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI81" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI81" src="GroupClosed.gif" /> <span id="CTC81" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB81" style="width:100%;display:none"><div id="CTA120" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> WriteAttribute(name,&nbsp;value,&nbsp;encode)&nbsp;method</div></div><div id="CTA152" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Properties</div></div><div id="CTA169" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI169" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI169" src="GroupClosed.gif" /> <span id="CTC169" onclick="javascript:DoShowFile2(this)" style="cursor:hand">FormFixerHtmlTextWriter&nbsp;class</span></div><div id="CTB169" style="width:100%;display:none"><div id="CTA32" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI32" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI32" src="GroupClosed.gif" /> <span id="CTC32" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB32" style="width:100%;display:none"><div id="CTA58" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _url&nbsp;field</div></div><div id="CTA21" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> FormFixerHtmlTextWriter(writer)&nbsp;constructor</div><div id="CTA8" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA82" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI82" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI82" src="GroupClosed.gif" /> <span id="CTC82" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB82" style="width:100%;display:none"><div id="CTA121" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> WriteAttribute(name,&nbsp;value,&nbsp;encode)&nbsp;method</div></div><div id="CTA153" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Properties</div></div><div id="CTA170" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI170" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI170" src="GroupClosed.gif" /> <span id="CTC170" onclick="javascript:DoShowFile2(this)" style="cursor:hand">GetString&nbsp;interface</span></div><div id="CTB170" style="width:100%;display:none"><div id="CTA9" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA83" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI83" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI83" src="GroupClosed.gif" /> <span id="CTC83" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB83" style="width:100%;display:none"><div id="CTA122" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetString(Str)&nbsp;method</div></div></div><div id="CTA171" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI171" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI171" src="GroupClosed.gif" /> <span id="CTC171" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Option&nbsp;class</span></div><div id="CTB171" style="width:100%;display:none"><div id="CTA10" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA84" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI84" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI84" src="GroupClosed.gif" /> <span id="CTC84" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB84" style="width:100%;display:none"><div id="CTA123" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> AddAnswer(UserName,&nbsp;QuestionId,&nbsp;exe)&nbsp;method</div><div id="CTA124" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetAnswerError(Answerid)&nbsp;method</div><div id="CTA125" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetLimit(Num)&nbsp;method</div><div id="CTA126" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetQuestion(Num)&nbsp;method</div><div id="CTA127" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SaveAnswerCode(Answerid,&nbsp;Text)&nbsp;method</div><div id="CTA128" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SelectBy1id(Str,&nbsp;Num,&nbsp;pname)&nbsp;method</div><div id="CTA129" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SetAnswerStatus(Answerid,&nbsp;Status)&nbsp;method</div><div id="CTA130" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SetAnswerText(Answerid,&nbsp;Text)&nbsp;method</div><div id="CTA131" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> SetUser(username)&nbsp;method</div></div><div id="CTA22" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Option()&nbsp;constructor</div></div><div id="CTA172" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:32px;height:1px" /><img src="Content.gif" /> Option.AnswerStatus&nbsp;enumeration</div><div id="CTA173" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI173" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI173" src="GroupClosed.gif" /> <span id="CTC173" onclick="javascript:DoShowFile2(this)" style="cursor:hand">User&nbsp;class</span></div><div id="CTB173" style="width:100%;display:none"><div id="CTA34" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI34" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI34" src="GroupClosed.gif" /> <span id="CTC34" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Fields</span></div><div id="CTB34" style="width:100%;display:none"><div id="CTA69" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _Compiler&nbsp;field</div><div id="CTA70" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _dotnetV&nbsp;field</div><div id="CTA71" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _path&nbsp;field</div><div id="CTA72" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _sign&nbsp;field</div><div id="CTA73" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> _username&nbsp;field</div></div><div id="CTA11" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA85" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI85" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI85" src="GroupClosed.gif" /> <span id="CTC85" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB85" style="width:100%;display:none"><div id="CTA132" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetCompiler()&nbsp;method</div><div id="CTA133" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetCompilerName()&nbsp;method</div><div id="CTA134" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetDotNetCompiler(type)&nbsp;method</div><div id="CTA135" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetPath(KzName)&nbsp;method</div><div id="CTA136" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetTestPath(Num)&nbsp;method</div></div><div id="CTA154" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI154" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI154" src="GroupClosed.gif" /> <span id="CTC154" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Properties</span></div><div id="CTB154" style="width:100%;display:none"><div id="CTA155" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> CodePath&nbsp;property</div><div id="CTA156" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> CompilerString&nbsp;property</div><div id="CTA157" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> ExePath&nbsp;property</div><div id="CTA158" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> Sign&nbsp;property</div><div id="CTA159" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> TextPath&nbsp;property</div></div><div id="CTA23" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> User(value,&nbsp;CompilerName,&nbsp;dotnetV)&nbsp;constructor</div></div><div id="CTA174" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI174" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI174" src="GroupClosed.gif" /> <span id="CTC174" onclick="javascript:DoShowFile2(this)" style="cursor:hand">WebSite&nbsp;class</span></div><div id="CTB174" style="width:100%;display:none"><div id="CTA12" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA86" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI86" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI86" src="GroupClosed.gif" /> <span id="CTC86" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB86" style="width:100%;display:none"><div id="CTA137" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetConfig(Name)&nbsp;method</div></div></div><div id="CTA175" style="width:100%"><img src="tp.gif" style="width:16px;height:1px" /><img id="CEI175" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI175" src="GroupClosed.gif" /> <span id="CTC175" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Xml&nbsp;class</span></div><div id="CTB175" style="width:100%;display:none"><div id="CTA13" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:48px;height:1px" /><img src="Content.gif" /> Members</div><div id="CTA87" style="width:100%"><img src="tp.gif" style="width:32px;height:1px" /><img id="CEI87" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI87" src="GroupClosed.gif" /> <span id="CTC87" onclick="javascript:DoShowFile2(this)" style="cursor:hand">Methods</span></div><div id="CTB87" style="width:100%;display:none"><div id="CTA149" style="width:100%"><img src="tp.gif" style="width:48px;height:1px" /><img id="CEI149" src="Collapsed.gif" onclick="javascript:DoClick(this)" style="cursor:hand" /><img id="GRI149" src="GroupClosed.gif" /> <span id="CTC149" onclick="javascript:DoShowFile2(this)" style="cursor:hand">CheckCache&nbsp;methods</span></div><div id="CTB149" style="width:100%;display:none"><div id="CTA138" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> CheckCache(CacheName)&nbsp;method</div><div id="CTA139" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:80px;height:1px" /><img src="Content.gif" /> CheckCache(CacheName,&nbsp;CacheValue)&nbsp;method</div></div><div id="CTA140" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetItemName(fn,&nbsp;name)&nbsp;method</div><div id="CTA141" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetItemText(fn,&nbsp;name)&nbsp;method</div><div id="CTA142" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:64px;height:1px" /><img src="Content.gif" /> GetNode(fn,&nbsp;Xpath)&nbsp;method</div></div></div></div><div id="CTA145" onclick="javascript:DoShowFile2(this)" style="width:100%;cursor:hand"><img src="tp.gif" style="width:16px;height:1px" /><img src="Content.gif" /> ChswordOJ.Properties</div>
+  </div>
+</div>
+<div id="SearchLoading" style="width:100%;height:100%;border:solid 1px black;position:relative;display:none">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+  <tr>
+    <td><img src="tp.gif" style="width:8px;height:8px" /></td>
+    <td style="height:32px;vertical-align:middle">
+      <strong>Search data loading, please wait...</strong>
+    </td>
+    <td><img src="tp.gif" style="width:8px;height:8px" /></td>
+  </tr>
+</table>
+</div>
+</td>
+<td style="width:8px"></td>
+</tr>
+<tr style="height:8px">
+<td style="width:8px"></td>
+<td style="width:100%;vertical-align:bottom"></td>
+<td style="width:8px"></td>
+</tr>
+</table>
+</body>
+<script type="text/javascript">
+<!--
+var lurl = window.parent.location + '';
+var i = lurl.indexOf('redirect=');
+if (i != -1)
+  window.parent.CONTENT.location = lurl.substr(i+9);
+// -->
+</script>
+</html>
