@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="OJDB" Class="OJDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CHSWORD;Initial Catalog=OJDB;Integrated Security=True" SettingsObjectName="ChswordOJ.Models.Properties.Settings" SettingsPropertyName="OJDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="School" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Submit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Accepted" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Question" Member="Question" ThisKey="Username" OtherKey="Username" Type="Question" />
+      <Association Name="User_Answer" Member="Answer" ThisKey="Username" OtherKey="Username" Type="Answer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Group">
+    <Type Name="Group">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Count" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BeginTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="Group_Question" Member="Question" OtherKey="GroupID" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Question" Member="Question">
+    <Type Name="Question">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="TimeLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MemoryLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SubmitCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="AcceptedCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IsTrue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Test" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UseTime" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UseMemory" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Question_Answer" Member="Answer" OtherKey="QuestionID" Type="Answer" />
+      <Association Name="Group_Question" Member="Group" ThisKey="GroupID" Type="Group" IsForeignKey="true" />
+      <Association Name="User_Question" Member="User" ThisKey="Username" OtherKey="Username" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Answer" Member="Answer">
+    <Type Name="Answer">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuestionID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Complier" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Code" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Exe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Question_Answer" Member="Question" ThisKey="QuestionID" Type="Question" IsForeignKey="true" />
+      <Association Name="User_Answer" Member="User" ThisKey="Username" OtherKey="Username" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AnswerInsert" Method="AnswerInsert">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="questionid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="exe" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AnswerUpdate" Method="AnswerUpdate">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.Byte" DbType="TinyInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AnswerSelect" Method="AnswerSelect">
+    <Parameter Name="questionid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="AnswerSelectResult">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAnswerError" Method="GetAnswerError">
+    <Parameter Name="Answerid" Parameter="answerid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="status" Type="System.Byte" DbType="TinyInt" />
+    <ElementType Name="GetAnswerErrorResult">
+      <Column Name="Complier" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Questionid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UserInsert" Method="UserInsert">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAnswerPass" Method="GetAnswerPass">
+    <Parameter Name="answerid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetAnswerPassResult">
+      <Column Name="Code" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLimit" Method="GetLimit">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetLimitResult">
+      <Column Name="MemoryLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimeLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="test" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUser" Method="GetUser">
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetUserResult">
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Accepted" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Submit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ratio" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GroupDelete" Method="GroupDelete">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Groupid" Method="Groupid">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GroupidResult">
+      <Column Name="name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="count" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GroupInsert" Method="GroupInsert">
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BeginTime" Parameter="beginTime" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="EndTime" Parameter="endTime" Type="System.DateTime" DbType="SmallDateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GroupSelect" Method="GroupSelect">
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GroupSelectResult">
+      <Column Name="name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="count" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="[order]" Member="order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GroupUpdate" Method="GroupUpdate">
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.QuestionDelete" Method="QuestionDelete">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.QuestionInsert" Method="QuestionInsert">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MemoryLimit" Parameter="memoryLimit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TimeLimit" Parameter="timeLimit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Body" Parameter="body" Type="System.String" DbType="NText" />
+    <Parameter Name="groupid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Test" Parameter="test" Type="System.String" DbType="NText" />
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.QuestionSelect" Method="QuestionSelect">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="QuestionSelectResult">
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="AcceptedCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Test" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SubmitCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MemoryLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TimeLimit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="groupid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.QuestionUpdate" Method="QuestionUpdate">
+    <Parameter Name="username" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="MemoryLimit" Parameter="memoryLimit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TimeLimit" Parameter="timeLimit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="title" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="Body" Parameter="body" Type="System.String" DbType="NText" />
+    <Parameter Name="groupid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Test" Parameter="test" Type="System.String" DbType="NText" />
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveCode" Method="SaveCode">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="text" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SelectAllQuestionbyGroup" Method="SelectAllQuestionbyGroup">
+    <Parameter Name="groupid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="SelectAllQuestionbyGroupResult">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AcceptedCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SubmitCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ratio" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SetAnswerText" Method="SetAnswerText">
+    <Parameter Name="id" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="text" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.StatusSelect" Method="StatusSelect">
+    <Parameter Name="Questionid" Parameter="questionid" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <ElementType Name="StatusSelectResult">
+      <Column Name="Questionid" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="exe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Addtime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

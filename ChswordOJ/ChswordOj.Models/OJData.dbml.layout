@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="OJData">
+  <DataContextMoniker Name="/OJDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="99b5bc5e-4ed8-4444-9add-e4304bec11e9" absoluteBounds="0.75, 1.375, 2, 2.4600651040673256">
+      <DataClassMoniker Name="/OJDataDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7661c312-9589-4932-9975-5f2900a4ea3a" absoluteBounds="0.76500000059604645, 1.8350000008940697, 1.9700000000000002, 1.9000651041666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99893dc9-103f-4863-b45c-914c8741c1b8" absoluteBounds="0.75, 5.625, 2, 1.9542057291666666">
+      <DataClassMoniker Name="/OJDataDataContext/Group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da2279b5-7e79-4dcf-9bab-b4170c356a0b" absoluteBounds="0.76500000059604645, 6.08500000089407, 1.9700000000000002, 1.3942057291666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="244925c7-1849-4b72-a806-5f9445a541c4" absoluteBounds="3.5, 1, 2, 3.13454427011311">
+      <DataClassMoniker Name="/OJDataDataContext/Question" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41416259-a543-4562-ad93-7b83c7261e32" absoluteBounds="3.5150000005960464, 1.4600000008940697, 1.9700000000000002, 2.574544270833333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf42ebb5-5b82-4d7e-accd-e6ae8ece1351" absoluteBounds="6.25, 1.375, 2, 2.2914453130215406">
+      <DataClassMoniker Name="/OJDataDataContext/Answer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d16eeec-386e-4214-91c5-ba7b214780df" absoluteBounds="6.2650000005960464, 1.8350000008940697, 1.9700000000000002, 1.7314453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.60210286458333); (4.5 : 6.60210286458333); (4.5 : 4.13454427011311)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OJDataDataContext/Group/Group_Question" />
+      <nodes>
+        <classShapeMoniker Id="99893dc9-103f-4863-b45c-914c8741c1b8" />
+        <classShapeMoniker Id="244925c7-1849-4b72-a806-5f9445a541c4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.60503255203366); (3.5 : 2.60503255203366)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OJDataDataContext/User/User_Question" />
+      <nodes>
+        <classShapeMoniker Id="99b5bc5e-4ed8-4444-9add-e4304bec11e9" />
+        <classShapeMoniker Id="244925c7-1849-4b72-a806-5f9445a541c4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.52072265651077); (6.25 : 2.52072265651077)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OJDataDataContext/Question/Question_Answer" />
+      <nodes>
+        <classShapeMoniker Id="244925c7-1849-4b72-a806-5f9445a541c4" />
+        <classShapeMoniker Id="cf42ebb5-5b82-4d7e-accd-e6ae8ece1351" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 1.375); (1.75 : 0.75); (5.875 : 0.75); (5.875 : 1.91660932825539); (6.25 : 1.91660932825539)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OJDataDataContext/User/User_Answer" />
+      <nodes>
+        <classShapeMoniker Id="99b5bc5e-4ed8-4444-9add-e4304bec11e9" />
+        <classShapeMoniker Id="cf42ebb5-5b82-4d7e-accd-e6ae8ece1351" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
