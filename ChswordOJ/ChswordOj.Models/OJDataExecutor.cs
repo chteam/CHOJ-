@@ -6,9 +6,9 @@ using System.Configuration;
 
 namespace ChswordOJ.Models
 {
-	public class OJDataExecutor
+	public class OJDataExecutor : OJDataDataContext
 	{
-		public OJDataDataContext OJDataFactory() {
+		public static OJDataDataContext OJDataFactory() {
 			return
 				new OJDataDataContext(
 					ConfigurationManager
