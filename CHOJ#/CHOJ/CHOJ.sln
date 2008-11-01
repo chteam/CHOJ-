@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ", "CHOJ\CHOJ.csproj", "{A7131123-F0BE-4CA4-9D94-A77397DDA253}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Tests", "CHOJ.Tests\CHOJ.Tests.csproj", "{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessProviders", "AccessProviders\AccessProviders.csproj", "{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Core", "CHOJ.Core\CHOJ.Core.csproj", "{AF5D2801-A8E7-4CDC-815F-4813672C186E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Models", "CHOJ.Models\CHOJ.Models.csproj", "{D816BB3A-04F6-488D-8B8A-B28AFC45435D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Controllers", "CHOJ.Controllers\CHOJ.Controllers.csproj", "{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AccessProviders\\AccessProviders.csproj
+		SccProjectName1 = AccessProviders
+		SccLocalPath1 = AccessProviders
+		SccProjectUniqueName2 = CHOJ.Controllers\\CHOJ.Controllers.csproj
+		SccProjectName2 = CHOJ.Controllers
+		SccLocalPath2 = CHOJ.Controllers
+		SccProjectUniqueName3 = CHOJ.Core\\CHOJ.Core.csproj
+		SccProjectName3 = CHOJ.Core
+		SccLocalPath3 = CHOJ.Core
+		SccProjectUniqueName4 = CHOJ.Data\\CHOJ.Data.csproj
+		SccProjectName4 = CHOJ.Data
+		SccLocalPath4 = CHOJ.Data
+		SccProjectUniqueName5 = CHOJ.Models\\CHOJ.Models.csproj
+		SccProjectName5 = CHOJ.Models
+		SccLocalPath5 = CHOJ.Models
+		SccProjectUniqueName6 = CHOJ.Tests\\CHOJ.Tests.csproj
+		SccProjectName6 = CHOJ.Tests
+		SccLocalPath6 = CHOJ.Tests
+		SccProjectUniqueName7 = CHOJ\\CHOJ.csproj
+		SccProjectName7 = CHOJ
+		SccLocalPath7 = CHOJ
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
