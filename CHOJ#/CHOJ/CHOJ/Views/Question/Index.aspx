@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Index.aspx.cs" Inherits="CHOJ.Views.Question.Index" %>
+	 Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 		<% System.Data.DataRow q = ViewData.Model as System.Data.DataRow; %>
