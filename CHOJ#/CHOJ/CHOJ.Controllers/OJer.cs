@@ -234,7 +234,8 @@ namespace CHOJ {
 		CompilerResults CompileCode(CodeDomProvider provider) {
 			String[] referenceAssemblies = { "System.dll" };
 			CompilerParameters cp = new CompilerParameters(referenceAssemblies, this.ExeFile, false);
-			cp.GenerateInMemory = true;
+			cp.GenerateInMemory = true; 
+         
 			// Generate an executable rather than a DLL file.
 			cp.GenerateExecutable = true;
 			//cp.CompilerOptions = "/debug:pdbonly";
