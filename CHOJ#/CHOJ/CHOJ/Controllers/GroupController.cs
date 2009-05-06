@@ -7,8 +7,9 @@ using System.Web.Mvc;
 namespace CHOJ.Controllers {
 	public class GroupController : BaseController {
 		public ActionResult List() {
-			var ret = GroupHelper.GroupList(DB);
-			DB.Dispose();
+            
+			var ret = GroupHelper.GroupList(Db);
+			Db.Dispose();
 			return View(ret);
 		}
 	}

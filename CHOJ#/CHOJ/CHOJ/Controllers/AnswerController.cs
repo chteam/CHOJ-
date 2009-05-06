@@ -20,15 +20,15 @@ namespace CHOJ.Controllers {
 		public ActionResult SubmitProcess(string Username, string Code, Guid Compiler, long QuestionId) {
 			OJer x = new OJer(Username, Code, Compiler, QuestionId, Server.MapPath("/"));
 			ThreadPool.QueueUserWorkItem(new WaitCallback(x.Start));
-			DB.Dispose();
+			Db.Dispose();
 		//	throw new OJException(.ToString());
 			return RedirectToAction("Status");
 		}
 		public ActionResult Status(int ? p) {
 			this.InitIntPage(ref p);
-			var Ld = AnswerHelper.Status(DB, p.Value);
+			var Ld = AnswerHelper.Status(Db, p.Value);
 			ViewData["source"] = Ld;
-			DB.Dispose();
+			Db.Dispose();
 			return View();
 		}
 		public ActionResult MyStatus(long? qid) {
@@ -37,7 +37,7 @@ namespace CHOJ.Controllers {
 			
 			}
 			else {
-				Ld = AnswerHelper.MySatus(DB, User.Identity.Name);
+				Ld = AnswerHelper.MySatus(Db, User.Identity.Name);
 			}
 			
 			return View();

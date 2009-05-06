@@ -33,7 +33,7 @@
 					<td><%=dr["SubmitCount"]%></td>
 					<td><%=Html.GetRatio(dr["AcceptedCount"], dr["SubmitCount"])%></td>
 				</tr>
-				<%} %>
+				<%} %> 
 			</table>
 		</div>
 	</div>

@@ -177,8 +177,8 @@ namespace CHOJ.Controllers {
 				MembershipUser newUser = Provider.CreateUser(username, password, email, null, null, true, null, out createStatus);
 
 				if (newUser != null) {
-					ProfileHelper.Create(DB, username);
-					DB.Dispose();
+					ProfileHelper.Create(Db, username);
+					Db.Dispose();
 					FormsAuth.SetAuthCookie(username, false /* createPersistentCookie */);
 					return RedirectToAction("Index", "Home");
 				}

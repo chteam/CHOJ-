@@ -5,7 +5,7 @@
 <head runat="server">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>
-		<%= Html.Encode(ViewData["Title"]) %></title>
+		<%= Html.Encode(ViewData["Page_Title"]) %></title>
 	<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

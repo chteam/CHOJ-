@@ -2,7 +2,7 @@
 	 Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-		<% System.Data.DataRow q = ViewData.Model as System.Data.DataRow; %>
+		<% System.Data.DataRow q = Model as System.Data.DataRow; %>
 		<h3><%=q["title"] %></h3>
 		<div class="center">
 			<span class="limit">Time limit:</span><%=q["TimeLimit"]%> Seconds			<span class="limit">Memory limit:</span><%=q["MemoryLimit"]%> K 
