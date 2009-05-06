@@ -55,6 +55,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 5\Assemblies\System.Web.Routing.dll</HintPath>
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

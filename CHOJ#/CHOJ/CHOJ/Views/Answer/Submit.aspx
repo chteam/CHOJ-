@@ -7,9 +7,9 @@
 		UserName :
 		<input name="Username" type="text" value="<%=ViewData["Username"] %>" readonly="readonly" /><br />
 		Problem Id :<%=Html.TextBox("QuestionId")%><br />
-		Compiler :<%=Html.DropDownList("","Compiler")%><br />
+		Compiler :<%=Html.DropDownList("Compiler")%><br />
 		Code :<textarea name="Code" rows="2" cols="20" style="height: 237px; width: 416px;"></textarea><br />
-		<input type="submit" value="Submit" />
-		</form>
+		<input type="submit" value="Submit" /> 
+		</form> 
 	</div>
 </asp:Content>

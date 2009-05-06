@@ -13,6 +13,7 @@ namespace CHOJ {
 	public class OJer {
 		#region init
 		public string Username { get; set; }
+
 		public string Code { get; set; }
 		public Compiler Compiler { get; set; }
 		public DataRow Question { get; set; }
@@ -245,7 +246,15 @@ namespace CHOJ {
 		    //cp.CompilerOptions = "/debug:pdbonly";
 			//cp.MainClass = "Class1";
 			// Invoke compilation.
-			return provider.CompileAssemblyFromSource(cp, Code);
+			return provider.CompileAssemblyFromSource(cp, @"using System;
+using System.Collections.Generic;
+using System.IO;
+
+[assembly: System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.RequestOptional,Name=""Internet"")]
+[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, Flags = System.Security.Permissions.SecurityPermissionFlag.Execution)]
+[assembly: System.Security.Permissions.UIPermission(System.Security.Permissions.SecurityAction.RequestMinimum, Unrestricted = true)]
+[assembly: System.Security.Permissions.FileIOPermission(System.Security.Permissions.SecurityAction.RequestMinimum, AllFiles = System.Security.Permissions.FileIOPermissionAccess.NoAccess)]
+"+Code);
 		}
 
 		/// <summary>
