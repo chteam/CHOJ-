@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Data;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -49,23 +48,27 @@ namespace CHOJ {
 
 		public void Start(Object stateInfo) {
 			//检查
-			if (CheckCode()) {
-				//编译
-				this.AnswerType = AnswerType.Compiling;
-				if (CompileExecutable()) {
-					//编译完成
-					//测试
-					this.AnswerType = AnswerType.Testing;
-					Test();
-				}
-				else {
-					this.AnswerType = AnswerType.CompileError;
-				}
-			}
-			else {
-				this.AnswerType = AnswerType.DangerCode;
-			}
-			DataBaseExecutor DB = new DataBaseExecutor(new OleDbDataOpener(ConfigurationManager.ConnectionStrings["AccessFileName"].ConnectionString));
+		    if (CheckCode())
+		    {
+		        //编译
+		        AnswerType = AnswerType.Compiling;
+		        if (CompileExecutable())
+		        {
+		            //编译完成
+		            //测试
+		            AnswerType = AnswerType.Testing;
+		            Test();
+		        }
+		        else
+		        {
+		            this.AnswerType = AnswerType.CompileError;
+		        }
+		    }
+		    else
+		    {
+		        this.AnswerType = AnswerType.DangerCode;
+		    }
+		    DataBaseExecutor DB = new DataBaseExecutor(new OleDbDataOpener(ConfigurationManager.ConnectionStrings["AccessFileName"].ConnectionString));
 			AnswerHelper.SaveAnswer(DB,
 				this.Question.Field<int>("id"),
 				this.Username,
