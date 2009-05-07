@@ -17,9 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Controllers", "CHOJ.Co
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CHOJCloud", "CHOJCloud\CHOJCloud.ccproj", "{959786E8-B15D-47E8-9071-5A5C77BBE59E}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudService1", "CloudService1\CloudService1\CloudService1.ccproj", "{7D27B1BC-8B8B-4F41-9159-962397F44082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService1_WebRole", "CloudService1\CloudService1_WebRole\CloudService1_WebRole.csproj", "{0E7137A2-8176-49BB-9766-8DC5191FAA08}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -47,6 +51,12 @@ Global
 		SccProjectUniqueName8 = CHOJCloud\\CHOJCloud.ccproj
 		SccProjectName8 = CHOJCloud
 		SccLocalPath8 = CHOJCloud
+		SccProjectUniqueName9 = CloudService1\\CloudService1\\CloudService1.ccproj
+		SccProjectName9 = CloudService1/CloudService1
+		SccLocalPath9 = CloudService1\\CloudService1
+		SccProjectUniqueName10 = CloudService1\\CloudService1_WebRole\\CloudService1_WebRole.csproj
+		SccProjectName10 = CloudService1/CloudService1_WebRole
+		SccLocalPath10 = CloudService1\\CloudService1_WebRole
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +95,14 @@ Global
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D27B1BC-8B8B-4F41-9159-962397F44082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D27B1BC-8B8B-4F41-9159-962397F44082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D27B1BC-8B8B-4F41-9159-962397F44082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D27B1BC-8B8B-4F41-9159-962397F44082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7137A2-8176-49BB-9766-8DC5191FAA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7137A2-8176-49BB-9766-8DC5191FAA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7137A2-8176-49BB-9766-8DC5191FAA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7137A2-8176-49BB-9766-8DC5191FAA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
