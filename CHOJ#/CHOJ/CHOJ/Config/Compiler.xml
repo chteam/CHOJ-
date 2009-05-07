@@ -31,7 +31,7 @@
 			<string>System\s*\.\s*Web</string>
 		</DangerCode>
 	</Compiler>
-	<Compiler>
+		<!--<Compiler>
 		<Guid>04F09170-B700-4ab9-811D-3F3FD9249B11</Guid>
 		<Name>JScript</Name>
 		<Level>10</Level>
@@ -46,7 +46,7 @@
 			<string>System\s*\.\s*Web</string>
 		</DangerCode>
 	</Compiler>
-	<!--<Compiler>
+<Compiler>
 		<Guid>fa387d48-2093-4ff3-a4f8-6eed3d0d9843</Guid>
 		<Name>C#2.0</Name>
 		<Level>10</Level>

@@ -84,11 +84,21 @@ namespace CHOJ {
 				Guid
 				);
 			db.Dispose();
-			File.WriteAllText(RootPath + string.Format(@"SourceCode\{0}.sc", Guid)
+           if(!Directory.Exists(RootPath + @"SourceCode\"))
+           {
+               Directory.CreateDirectory(RootPath + @"SourceCode\");
+           }
+		    File.WriteAllText(RootPath + string.Format(@"SourceCode\{0}.sc", Guid)
 				, Code);
 			if (AnswerType == AnswerType.CompileError) {
+                if (!Directory.Exists(RootPath + @"CompilerInfo\")) {
+                    Directory.CreateDirectory(RootPath + @"CompilerInfo\");
+                }
 				File.WriteAllText(RootPath + string.Format(@"CompilerInfo\{0}.txt", Guid), Log.ToString());
 			}
+            if (!Directory.Exists(RootPath + @"temp\")) {
+                Directory.CreateDirectory(RootPath + @"temp\");
+            }
 			File.Delete(ExeFile);
 		}
 		#region Test
@@ -113,9 +123,9 @@ namespace CHOJ {
 		    p.OutputDataReceived += TestOutputHandler;
 		//p.StartInfo.RedirectStandardError = true;
 		p.Exited += ProcessExited;
-			
+
 		//	p.StartInfo.ErrorDialog = false;
-		//	p.ErrorDataReceived += new DataReceivedEventHandler(ErrorHandler);
+			p.ErrorDataReceived += ErrorHandler;
 			p.Start();
 
 			p.BeginOutputReadLine();
@@ -138,8 +148,6 @@ namespace CHOJ {
 			//	_currentOutString.Append(redirectreader.);
 				sortStreamWriter.Close();
 		//		redirectreader.Close();
-				
-			 
 				p.WaitForExit(2000);
 				if (!p.HasExited)
 					p.Kill();
@@ -191,7 +199,7 @@ namespace CHOJ {
 					    break;
 					}
 			        break;
-				case -532459699:
+				case -532459699://权限不足或使用不允许代码
 				case -1073741676:
 				case -1073741819:
 				case -1073741571:
@@ -204,11 +212,12 @@ namespace CHOJ {
 		private void TestOutputHandler(object sender, DataReceivedEventArgs outLine) {
 		    if (String.IsNullOrEmpty(outLine.Data)) return;
 		    _currentOutString.AppendLine(outLine.Data);
-		    if ((sender as Process).HasExited)
+		    if (((Process) sender).HasExited)
 		        OutputOver = true;
 		}
 		private void ErrorHandler(object sender, DataReceivedEventArgs outLine) {
-
+//            out
+		    var x=outLine.Data;
 		}
 		#endregion
 
@@ -246,15 +255,7 @@ namespace CHOJ {
 		    //cp.CompilerOptions = "/debug:pdbonly";
 			//cp.MainClass = "Class1";
 			// Invoke compilation.
-			return provider.CompileAssemblyFromSource(cp, @"using System;
-using System.Collections.Generic;
-using System.IO;
-
-[assembly: System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.RequestOptional,Name=""Internet"")]
-[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, Flags = System.Security.Permissions.SecurityPermissionFlag.Execution)]
-[assembly: System.Security.Permissions.UIPermission(System.Security.Permissions.SecurityAction.RequestMinimum, Unrestricted = true)]
-[assembly: System.Security.Permissions.FileIOPermission(System.Security.Permissions.SecurityAction.RequestMinimum, AllFiles = System.Security.Permissions.FileIOPermissionAccess.NoAccess)]
-"+Code);
+            return provider.CompileAssemblyFromSource(cp, SecurityCodeLoader.GetSecurityCode(RootPath,Compiler.Language) + Code);
 		}
 
 		/// <summary>

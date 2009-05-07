@@ -152,13 +152,14 @@
     <Content Include="App_Data\ASPNetDB.mdb">
     </Content>
     <Content Include="Config\Compiler.xml" />
+    <Content Include="Config\CSharp.txt" />
+    <Content Include="Config\VisualBasic.txt" />
     <Content Include="Views\Admin\ClearCache.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Question\Index.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CompilerInfo\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
