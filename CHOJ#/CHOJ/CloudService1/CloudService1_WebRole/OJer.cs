@@ -42,7 +42,7 @@ namespace CHOJ {
        //     Question = QuestionHelper.Question(db, questionId);
             RootPath = siteRoot;
          //   AnswerType = AnswerType.Queuing;
-            ExeFile = RootPath + string.Format(@"temp\{0}.exe", "a");
+            ExeFile = RootPath + string.Format(@"{0}.exe", "a");
       //      db.Dispose();
         }
 
