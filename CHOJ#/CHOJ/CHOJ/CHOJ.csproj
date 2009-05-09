@@ -125,7 +125,6 @@
     <Content Include="Image\Photo\1002.gif" />
     <Content Include="Views\Answer\Status.aspx" />
     <Content Include="Views\Answer\Submit.aspx" />
-    <Content Include="Views\Group\List.aspx" />
     <Content Include="Views\Profile\Index.aspx" />
     <Content Include="Views\Question\List.aspx" />
     <Content Include="Web.config" />
@@ -192,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maps\Question.xml" />
+    <Content Include="Views\Group\List.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

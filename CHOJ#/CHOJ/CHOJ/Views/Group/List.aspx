@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewPage<IList<CHOJ.Models.Group>>" %>
-
+﻿<%@ Page  Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IList<CHOJ.Models.Group>>" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-	<div class="center">
+<div class="center">
 	<ul>
 	<%foreach (CHOJ.Models.Group dr in ViewData.Model)
    { 
