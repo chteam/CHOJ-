@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessProviders", "AccessPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Core", "CHOJ.Core\CHOJ.Core.csproj", "{AF5D2801-A8E7-4CDC-815F-4813672C186E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
-EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CHOJCloud", "CHOJCloud\CHOJCloud.ccproj", "{959786E8-B15D-47E8-9071-5A5C77BBE59E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Service", "CHOJ.Service\CHOJ.Service.csproj", "{3F7D98AA-A4C0-4BCC-9671-0DD15782DA01}"
@@ -29,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.AccessDao\CHOJ.AccessDao.csproj", "{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 10
@@ -41,27 +41,27 @@ Global
 		SccProjectUniqueName2 = CHOJ.Core\\CHOJ.Core.csproj
 		SccProjectName2 = CHOJ.Core
 		SccLocalPath2 = CHOJ.Core
-		SccProjectUniqueName3 = CHOJ.Data\\CHOJ.Data.csproj
-		SccProjectName3 = CHOJ.Data
-		SccLocalPath3 = CHOJ.Data
-		SccProjectUniqueName4 = CHOJ.Tests\\CHOJ.Tests.csproj
-		SccProjectName4 = CHOJ.Tests
-		SccLocalPath4 = CHOJ.Tests
-		SccProjectUniqueName5 = CHOJ\\CHOJ.csproj
-		SccProjectName5 = CHOJ
-		SccLocalPath5 = CHOJ
-		SccProjectUniqueName6 = CHOJCloud\\CHOJCloud.ccproj
-		SccProjectName6 = CHOJCloud
-		SccLocalPath6 = CHOJCloud
-		SccProjectUniqueName7 = CHOJ.Service\\CHOJ.Service.csproj
-		SccProjectName7 = CHOJ.Service
-		SccLocalPath7 = CHOJ.Service
-		SccProjectUniqueName8 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
-		SccProjectName8 = CHOJ.Abstractions
-		SccLocalPath8 = CHOJ.Abstractions
-		SccProjectUniqueName9 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
-		SccProjectName9 = CHOJ.AccessDao
-		SccLocalPath9 = CHOJ.AccessDao
+		SccProjectUniqueName3 = CHOJ.Tests\\CHOJ.Tests.csproj
+		SccProjectName3 = CHOJ.Tests
+		SccLocalPath3 = CHOJ.Tests
+		SccProjectUniqueName4 = CHOJ\\CHOJ.csproj
+		SccProjectName4 = CHOJ
+		SccLocalPath4 = CHOJ
+		SccProjectUniqueName5 = CHOJCloud\\CHOJCloud.ccproj
+		SccProjectName5 = CHOJCloud
+		SccLocalPath5 = CHOJCloud
+		SccProjectUniqueName6 = CHOJ.Service\\CHOJ.Service.csproj
+		SccProjectName6 = CHOJ.Service
+		SccLocalPath6 = CHOJ.Service
+		SccProjectUniqueName7 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
+		SccProjectName7 = CHOJ.Abstractions
+		SccLocalPath7 = CHOJ.Abstractions
+		SccProjectUniqueName8 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
+		SccProjectName8 = CHOJ.AccessDao
+		SccLocalPath8 = CHOJ.AccessDao
+		SccProjectUniqueName9 = CHOJ.Data\\CHOJ.Data.csproj
+		SccProjectName9 = CHOJ.Data
+		SccLocalPath9 = CHOJ.Data
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,10 +84,6 @@ Global
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -104,6 +100,10 @@ Global
 		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

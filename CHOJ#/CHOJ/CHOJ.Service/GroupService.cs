@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using CHOJ.Abstractions;
+using CHOJ.Models;
 using IBatisNet.DataAccess;
 
 namespace CHOJ.Service
@@ -25,6 +27,17 @@ namespace CHOJ.Service
         public static GroupService GetInstance()
         {
             return _instance;
+        }
+
+
+       public  IList<Group> GroupList()
+       {
+           return GroupDao.GroupList();
+       }
+
+        public Group GetGroup(long id)
+        {
+            return GroupDao.GetGroup(id);
         }
 
     }

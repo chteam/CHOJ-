@@ -7,16 +7,16 @@ using System.Text.RegularExpressions;
 using System.Web.Mvc.Html;
 namespace CHOJ {
 	static public class LinkHelper {
-		public static string QuestionList(this HtmlHelper Html, string text,object id) {
-			return Html.ActionLink(text, "List", "Question", new { id }, null);
+		public static string QuestionList(this HtmlHelper html, string text,object id) {
+			return html.ActionLink(text, "List", "Question", new { id }, null);
 		}
-		public static string QuestionLink(this HtmlHelper Html, string text, object id) {
-			return Html.ActionLink(text, "Index", "Question", new { id }, null);
+		public static string QuestionLink(this HtmlHelper html, string text, object id) {
+			return html.ActionLink(text, "Index", "Question", new { id }, null);
 		}
-		public static string SubmitLink(this HtmlHelper Html, string text, object id) {
-			return Html.ActionLink(text, "Submit", "Answer", new { id }, null);
+		public static string SubmitLink(this HtmlHelper html, string text, object id) {
+			return html.ActionLink(text, "Submit", "Answer", new { id }, null);
 		}
-		public static string GetRatio(this  HtmlHelper Html, object fz, object fm) {
+		public static string GetRatio(this  HtmlHelper html, object fz, object fm) {
 			int x;
 			if(fm.ToString()=="0")
 				x=0;
@@ -27,9 +27,10 @@ namespace CHOJ {
 		/// <summary>
 		/// 对Question进行格式化。
 		/// </summary>
+		/// <param name="html"></param>
 		/// <param name="text">Question，为一个字符串。</param>
 		/// <returns>格式化后的Question。</returns>
-		public static String QuestionFormat(this HtmlHelper Html, String text) {
+		public static String QuestionFormat(this HtmlHelper html, String text) {
 			text = text.Replace("<", "&lt;");
 			text = text.Replace(">", "&gt;");
 			text = Regex.Replace(text, @"[\n\r]+input[\n\r]+", "<br /><strong>Input</strong><br />", RegexOptions.IgnoreCase);

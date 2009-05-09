@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ServiceHosting.ServiceRuntime, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -145,6 +149,10 @@
       <Project>{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}</Project>
       <Name>AccessProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
+      <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
+      <Name>CHOJ.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CHOJ.Core\CHOJ.Core.csproj">
       <Project>{AF5D2801-A8E7-4CDC-815F-4813672C186E}</Project>
       <Name>CHOJ.Core</Name>
@@ -152,6 +160,10 @@
     <ProjectReference Include="..\CHOJ.Data\CHOJ.Data.csproj">
       <Project>{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}</Project>
       <Name>CHOJ.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHOJ.Service\CHOJ.Service.csproj">
+      <Project>{3F7D98AA-A4C0-4BCC-9671-0DD15782DA01}</Project>
+      <Name>CHOJ.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

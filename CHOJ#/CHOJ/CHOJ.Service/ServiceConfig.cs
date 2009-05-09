@@ -26,9 +26,11 @@ namespace CHOJ.Service
                         var handler = new ConfigureHandler(Reset);
                         try
                         {
-                            // IBatisNet.DataAccess.DaoManager.ConfigureAndWatch(handler);
                             var builder = new DomDaoManagerBuilder();
-                            builder.ConfigureAndWatch(handler);
+                            builder.ConfigureAndWatch("dao.config", handler); 
+                    //         IBatisNet.DataAccess.DaoManager.ConfigureAndWatch(handler);
+          //                  var builder = new DomDaoManagerBuilder();
+            //                builder.ConfigureAndWatch(handler);
                           //  builder.Configure();
 
                         }

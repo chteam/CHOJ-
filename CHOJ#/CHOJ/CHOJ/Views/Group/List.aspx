@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewPage<IList<CHOJ.Models.Group>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="center">
 	<ul>
-	<%foreach (System.Data.DataRow dr in ViewData.Model as IEnumerable<System.Data.DataRow>)
+	<%foreach (CHOJ.Models.Group dr in ViewData.Model)
    { 
        
        %>
 		<li>
-		<%=Html.QuestionList(dr["name"].ToString(), dr["id"])%></li>
+		<%=Html.QuestionList(dr.Name, dr.ID)%></li>
 	<%} %>
 	</ul>
 	</div>
