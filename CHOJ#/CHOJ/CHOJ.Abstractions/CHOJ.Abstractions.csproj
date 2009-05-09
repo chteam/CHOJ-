@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAnswerDao.cs" />
+    <Compile Include="IGroupDao.cs" />
+    <Compile Include="IProfileDao.cs" />
+    <Compile Include="IQuestionDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,20 +11,27 @@ namespace CHOJ.Service
     {
 
 		private static AnswerService _instance = new AnswerService();
-		private DaoManager _daoManager = null;
-		private IAnswerDao _accountDao = null;
+		private IDaoManager _daoManager;
+		private IAnswerDao _answerDao;
 
 
 
         private AnswerService() 
 		{
 			_daoManager = ServiceConfig.GetInstance().DaoManager;
-			_accountDao = (IAccountDao) _daoManager.GetDao("Account");// or daoManager["Account"]
+            _answerDao = (IAnswerDao)_daoManager.GetDao(typeof(IAnswerDao));
 		}
 
-		public static AnswerService GetInstance() 
+        IAnswerDao AnswerDao
+        {
+            get { return _answerDao; }
+        }
+
+        public static AnswerService GetInstance() 
 		{
 			return _instance;
 		}
+
+
     }
 }
