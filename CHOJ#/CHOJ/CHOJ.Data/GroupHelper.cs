@@ -7,7 +7,7 @@ using System.Data;
 
 namespace CHOJ {
 	public class GroupHelper {
-		static readonly string GROUP = "CHOJ.GROUP";
+		const string GROUP = "CHOJ.GROUP";
 		static public IEnumerable<DataRow> GroupList(DataBaseExecutor db) {
 			var rows =GroupTable(db).AsEnumerable().Where(c=>c.Field<int>("type")==0).OrderBy(c=>c.Field<int>("order"));
 			return rows;
