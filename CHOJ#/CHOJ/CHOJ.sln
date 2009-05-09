@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Core", "CHOJ.Core\CHOJ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Models", "CHOJ.Models\CHOJ.Models.csproj", "{D816BB3A-04F6-488D-8B8A-B28AFC45435D}"
-EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CHOJCloud", "CHOJCloud\CHOJCloud.ccproj", "{959786E8-B15D-47E8-9071-5A5C77BBE59E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Service", "CHOJ.Service\CHOJ.Service.csproj", "{3F7D98AA-A4C0-4BCC-9671-0DD15782DA01}"
@@ -29,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 		DLL\log4net.dll = DLL\log4net.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.AccessDao\CHOJ.AccessDao.csproj", "{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 10
@@ -44,24 +44,24 @@ Global
 		SccProjectUniqueName3 = CHOJ.Data\\CHOJ.Data.csproj
 		SccProjectName3 = CHOJ.Data
 		SccLocalPath3 = CHOJ.Data
-		SccProjectUniqueName4 = CHOJ.Models\\CHOJ.Models.csproj
-		SccProjectName4 = CHOJ.Models
-		SccLocalPath4 = CHOJ.Models
-		SccProjectUniqueName5 = CHOJ.Tests\\CHOJ.Tests.csproj
-		SccProjectName5 = CHOJ.Tests
-		SccLocalPath5 = CHOJ.Tests
-		SccProjectUniqueName6 = CHOJ\\CHOJ.csproj
-		SccProjectName6 = CHOJ
-		SccLocalPath6 = CHOJ
-		SccProjectUniqueName7 = CHOJCloud\\CHOJCloud.ccproj
-		SccProjectName7 = CHOJCloud
-		SccLocalPath7 = CHOJCloud
-		SccProjectUniqueName8 = CHOJ.Service\\CHOJ.Service.csproj
-		SccProjectName8 = CHOJ.Service
-		SccLocalPath8 = CHOJ.Service
-		SccProjectUniqueName9 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
-		SccProjectName9 = CHOJ.Abstractions
-		SccLocalPath9 = CHOJ.Abstractions
+		SccProjectUniqueName4 = CHOJ.Tests\\CHOJ.Tests.csproj
+		SccProjectName4 = CHOJ.Tests
+		SccLocalPath4 = CHOJ.Tests
+		SccProjectUniqueName5 = CHOJ\\CHOJ.csproj
+		SccProjectName5 = CHOJ
+		SccLocalPath5 = CHOJ
+		SccProjectUniqueName6 = CHOJCloud\\CHOJCloud.ccproj
+		SccProjectName6 = CHOJCloud
+		SccLocalPath6 = CHOJCloud
+		SccProjectUniqueName7 = CHOJ.Service\\CHOJ.Service.csproj
+		SccProjectName7 = CHOJ.Service
+		SccLocalPath7 = CHOJ.Service
+		SccProjectUniqueName8 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
+		SccProjectName8 = CHOJ.Abstractions
+		SccLocalPath8 = CHOJ.Abstractions
+		SccProjectUniqueName9 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
+		SccProjectName9 = CHOJ.AccessDao
+		SccLocalPath9 = CHOJ.AccessDao
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,10 +88,6 @@ Global
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -104,6 +100,10 @@ Global
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
