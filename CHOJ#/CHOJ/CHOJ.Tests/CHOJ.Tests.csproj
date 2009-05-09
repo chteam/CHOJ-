@@ -65,10 +65,6 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CHOJ.Controllers\CHOJ.Controllers.csproj">
-      <Project>{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}</Project>
-      <Name>CHOJ.Controllers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CHOJ\CHOJ.csproj">
       <Project>{A7131123-F0BE-4CA4-9D94-A77397DDA253}</Project>
       <Name>CHOJ</Name>

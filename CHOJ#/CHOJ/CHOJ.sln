@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Models", "CHOJ.Models\CHOJ.Models.csproj", "{D816BB3A-04F6-488D-8B8A-B28AFC45435D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Controllers", "CHOJ.Controllers\CHOJ.Controllers.csproj", "{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}"
-EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CHOJCloud", "CHOJCloud\CHOJCloud.ccproj", "{959786E8-B15D-47E8-9071-5A5C77BBE59E}"
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudService1", "CloudService1\CloudService1\CloudService1.ccproj", "{7D27B1BC-8B8B-4F41-9159-962397F44082}"
@@ -23,40 +21,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudService1_WebRole", "Cl
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 10
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = AccessProviders\\AccessProviders.csproj
 		SccProjectName1 = AccessProviders
 		SccLocalPath1 = AccessProviders
-		SccProjectUniqueName2 = CHOJ.Controllers\\CHOJ.Controllers.csproj
-		SccProjectName2 = CHOJ.Controllers
-		SccLocalPath2 = CHOJ.Controllers
-		SccProjectUniqueName3 = CHOJ.Core\\CHOJ.Core.csproj
-		SccProjectName3 = CHOJ.Core
-		SccLocalPath3 = CHOJ.Core
-		SccProjectUniqueName4 = CHOJ.Data\\CHOJ.Data.csproj
-		SccProjectName4 = CHOJ.Data
-		SccLocalPath4 = CHOJ.Data
-		SccProjectUniqueName5 = CHOJ.Models\\CHOJ.Models.csproj
-		SccProjectName5 = CHOJ.Models
-		SccLocalPath5 = CHOJ.Models
-		SccProjectUniqueName6 = CHOJ.Tests\\CHOJ.Tests.csproj
-		SccProjectName6 = CHOJ.Tests
-		SccLocalPath6 = CHOJ.Tests
-		SccProjectUniqueName7 = CHOJ\\CHOJ.csproj
-		SccProjectName7 = CHOJ
-		SccLocalPath7 = CHOJ
-		SccProjectUniqueName8 = CHOJCloud\\CHOJCloud.ccproj
-		SccProjectName8 = CHOJCloud
-		SccLocalPath8 = CHOJCloud
-		SccProjectUniqueName9 = CloudService1\\CloudService1\\CloudService1.ccproj
-		SccProjectName9 = CloudService1/CloudService1
-		SccLocalPath9 = CloudService1\\CloudService1
-		SccProjectUniqueName10 = CloudService1\\CloudService1_WebRole\\CloudService1_WebRole.csproj
-		SccProjectName10 = CloudService1/CloudService1_WebRole
-		SccLocalPath10 = CloudService1\\CloudService1_WebRole
+		SccProjectUniqueName2 = CHOJ.Core\\CHOJ.Core.csproj
+		SccProjectName2 = CHOJ.Core
+		SccLocalPath2 = CHOJ.Core
+		SccProjectUniqueName3 = CHOJ.Data\\CHOJ.Data.csproj
+		SccProjectName3 = CHOJ.Data
+		SccLocalPath3 = CHOJ.Data
+		SccProjectUniqueName4 = CHOJ.Models\\CHOJ.Models.csproj
+		SccProjectName4 = CHOJ.Models
+		SccLocalPath4 = CHOJ.Models
+		SccProjectUniqueName5 = CHOJ.Tests\\CHOJ.Tests.csproj
+		SccProjectName5 = CHOJ.Tests
+		SccLocalPath5 = CHOJ.Tests
+		SccProjectUniqueName6 = CHOJ\\CHOJ.csproj
+		SccProjectName6 = CHOJ
+		SccLocalPath6 = CHOJ
+		SccProjectUniqueName7 = CHOJCloud\\CHOJCloud.ccproj
+		SccProjectName7 = CHOJCloud
+		SccLocalPath7 = CHOJCloud
+		SccProjectUniqueName8 = CloudService1\\CloudService1\\CloudService1.ccproj
+		SccProjectName8 = CloudService1/CloudService1
+		SccLocalPath8 = CloudService1\\CloudService1
+		SccProjectUniqueName9 = CloudService1\\CloudService1_WebRole\\CloudService1_WebRole.csproj
+		SccProjectName9 = CloudService1/CloudService1_WebRole
+		SccLocalPath9 = CloudService1\\CloudService1_WebRole
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,10 +82,6 @@ Global
 		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D816BB3A-04F6-488D-8B8A-B28AFC45435D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E}.Release|Any CPU.ActiveCfg = Release|Any CPU

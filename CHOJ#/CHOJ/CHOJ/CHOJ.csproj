@@ -96,6 +96,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\LinkHelper.cs" />
+    <Compile Include="Helper\TextHelper.cs" />
+    <Compile Include="OJer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,10 +144,6 @@
     <ProjectReference Include="..\AccessProviders\AccessProviders.csproj">
       <Project>{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}</Project>
       <Name>AccessProviders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CHOJ.Controllers\CHOJ.Controllers.csproj">
-      <Project>{8040DDBB-7FC6-4C3E-948F-F0E6E724AA7A}</Project>
-      <Name>CHOJ.Controllers</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHOJ.Core\CHOJ.Core.csproj">
       <Project>{AF5D2801-A8E7-4CDC-815F-4813672C186E}</Project>
