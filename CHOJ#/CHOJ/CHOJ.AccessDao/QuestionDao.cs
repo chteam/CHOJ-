@@ -12,7 +12,7 @@ namespace CHOJ.AccessDao
     public class QuestionDao:BaseSqlMapDao, IQuestionDao {
 
         public IList<Question> AllQuestion() {
-           
+            return this.ExecuteQueryForList<Question>("AllQuestion", null);
         }
     }
 }

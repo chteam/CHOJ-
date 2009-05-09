@@ -170,9 +170,16 @@
   <ItemGroup>
     <Content Include="dao.config" />
     <Content Include="DataBase.config" />
-    <Content Include="Maps\Account.xml" />
+    <Content Include="Maps\Profile.xml" />
+    <Content Include="Maps\Answer.xml" />
     <Content Include="providers.config" />
     <Content Include="SqlMap.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maps\Group.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maps\Question.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
