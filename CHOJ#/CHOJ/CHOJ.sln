@@ -29,13 +29,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.Acce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Access", "Access", "{78D413F0-5007-491B-8D1A-F4AE04353ADF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageClientAPISample", "StorageClient\StorageClientAPISample\StorageClientAPISample.csproj", "{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspProviders", "AspProviders\Lib\AspProviders.csproj", "{306D2F9E-D6D0-4D96-94F1-173C60A13875}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = AccessProviders\\AccessProviders.csproj
+		SccProjectTopLevelParentUniqueName1 = CHOJ.sln
 		SccProjectName1 = AccessProviders
 		SccLocalPath1 = AccessProviders
 		SccProjectUniqueName2 = CHOJ.Core\\CHOJ.Core.csproj
@@ -48,20 +57,31 @@ Global
 		SccProjectName4 = CHOJ
 		SccLocalPath4 = CHOJ
 		SccProjectUniqueName5 = CHOJCloud\\CHOJCloud.ccproj
+		SccProjectTopLevelParentUniqueName5 = CHOJ.sln
 		SccProjectName5 = CHOJCloud
 		SccLocalPath5 = CHOJCloud
-		SccProjectUniqueName6 = CHOJ.Service\\CHOJ.Service.csproj
-		SccProjectName6 = CHOJ.Service
-		SccLocalPath6 = CHOJ.Service
-		SccProjectUniqueName7 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
-		SccProjectName7 = CHOJ.Abstractions
-		SccLocalPath7 = CHOJ.Abstractions
-		SccProjectUniqueName8 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
-		SccProjectName8 = CHOJ.AccessDao
-		SccLocalPath8 = CHOJ.AccessDao
-		SccProjectUniqueName9 = CHOJ.Data\\CHOJ.Data.csproj
-		SccProjectName9 = CHOJ.Data
-		SccLocalPath9 = CHOJ.Data
+		SccProjectUniqueName6 = CHOJ.Data\\CHOJ.Data.csproj
+		SccProjectTopLevelParentUniqueName6 = CHOJ.sln
+		SccProjectName6 = CHOJ.Data
+		SccLocalPath6 = CHOJ.Data
+		SccProjectUniqueName7 = CHOJ.Service\\CHOJ.Service.csproj
+		SccProjectName7 = CHOJ.Service
+		SccLocalPath7 = CHOJ.Service
+		SccProjectUniqueName8 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
+		SccProjectName8 = CHOJ.Abstractions
+		SccLocalPath8 = CHOJ.Abstractions
+		SccProjectUniqueName9 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
+		SccProjectTopLevelParentUniqueName9 = CHOJ.sln
+		SccProjectName9 = CHOJ.AccessDao
+		SccLocalPath9 = CHOJ.AccessDao
+		SccProjectUniqueName10 = StorageClient\\StorageClientAPISample\\StorageClientAPISample.csproj
+		SccProjectTopLevelParentUniqueName10 = CHOJ.sln
+		SccProjectName10 = StorageClient/StorageClientAPISample
+		SccLocalPath10 = StorageClient\\StorageClientAPISample
+		SccProjectUniqueName11 = AspProviders\\Lib\\AspProviders.csproj
+		SccProjectTopLevelParentUniqueName11 = CHOJ.sln
+		SccProjectName11 = AspProviders/Lib
+		SccLocalPath11 = AspProviders\\Lib
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,8 +124,24 @@ Global
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
+		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
+		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
+		{959786E8-B15D-47E8-9071-5A5C77BBE59E} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
+		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
+		{306D2F9E-D6D0-4D96-94F1-173C60A13875} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
 	EndGlobalSection
 EndGlobal
