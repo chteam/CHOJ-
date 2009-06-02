@@ -37,9 +37,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageClientAPISample", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspProviders", "AspProviders\Lib\AspProviders.csproj", "{306D2F9E-D6D0-4D96-94F1-173C60A13875}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TWitter", "TWitter", "{6C174504-22B1-4D13-B655-C604F532BB41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitter", "LinqToTwitter\LinqToTwitter.csproj", "{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitterTests", "LinqToTwitterTests\LinqToTwitterTests.csproj", "{2DC196D0-E574-4F11-A235-8987DC8FFB79}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 14
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -82,6 +88,14 @@ Global
 		SccProjectTopLevelParentUniqueName11 = CHOJ.sln
 		SccProjectName11 = AspProviders/Lib
 		SccLocalPath11 = AspProviders\\Lib
+		SccProjectUniqueName12 = LinqToTwitter\\LinqToTwitter.csproj
+		SccProjectTopLevelParentUniqueName12 = CHOJ.sln
+		SccProjectName12 = LinqToTwitter
+		SccLocalPath12 = LinqToTwitter
+		SccProjectUniqueName13 = LinqToTwitterTests\\LinqToTwitterTests.csproj
+		SccProjectTopLevelParentUniqueName13 = CHOJ.sln
+		SccProjectName13 = LinqToTwitterTests
+		SccLocalPath13 = LinqToTwitterTests
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -132,16 +146,26 @@ Global
 		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
 		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
 		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
+		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
 		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
 		{306D2F9E-D6D0-4D96-94F1-173C60A13875} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
+		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1} = {6C174504-22B1-4D13-B655-C604F532BB41}
+		{2DC196D0-E574-4F11-A235-8987DC8FFB79} = {6C174504-22B1-4D13-B655-C604F532BB41}
 	EndGlobalSection
 EndGlobal
