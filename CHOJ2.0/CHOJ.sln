@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 		DLL\IBatisNet.DataAccess.dll = DLL\IBatisNet.DataAccess.dll
 		DLL\IBatisNet.DataMapper.dll = DLL\IBatisNet.DataMapper.dll
 		DLL\log4net.dll = DLL\log4net.dll
+		DLL\Microsoft.SqlServices.Data.SDK.Common.dll = DLL\Microsoft.SqlServices.Data.SDK.Common.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.AccessDao\CHOJ.AccessDao.csproj", "{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}"
