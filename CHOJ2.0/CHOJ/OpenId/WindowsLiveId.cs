@@ -905,7 +905,7 @@ namespace CHOJ.OpenId
         /// </summary>
         public string GetTrustedToken(string user)
         {
-            if (user == null || user.Length == 0)
+            if (string.IsNullOrEmpty(user))
             {
                 Debug("Error: GetTrustedToken: Invalid user specified.");
                 return null;
@@ -952,10 +952,10 @@ namespace CHOJ.OpenId
                 throw new ArgumentNullException("settingsFile");
             }
 
-            NameValueCollection settings = new NameValueCollection();
+            var settings = new NameValueCollection();
 
             // Throws an exception on any failure.
-            XmlDocument xd = new XmlDocument();
+            var xd = new XmlDocument();
             xd.Load(settingsFile);
 
             XmlNode appIdNode = xd.SelectSingleNode("//windowslivelogin/appid");
@@ -996,7 +996,7 @@ namespace CHOJ.OpenId
                 const int keyLength = 16;
                 byte[] data = Encoding.Default.GetBytes(prefix + secret);
                 byte[] hashOutput = hashAlg.ComputeHash(data);
-                byte[] byteKey = new byte[keyLength];
+                var byteKey = new byte[keyLength];
                 Array.Copy(hashOutput, byteKey, keyLength);
                 return byteKey;
             }
