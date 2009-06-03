@@ -18,6 +18,9 @@
             <%
         }
          %>
+    <div>
+    <a href="http://login.live.com/wlogin.srf?appid=000000004C015530&alg=wsignin1.0">LogOn with Windows Live Account</a>
+    </div>
     <form method="post" action="<%= Html.AttributeEncode(Url.Action("Login")) %>">
         <div>
             <table>

@@ -82,6 +82,12 @@
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinqToTwitter\LinqToTwitter.csproj">
+      <Project>{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}</Project>
+      <Name>LinqToTwitter</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

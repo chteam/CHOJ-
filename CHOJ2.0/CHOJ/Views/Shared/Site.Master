@@ -16,35 +16,36 @@
 			</div>
 			<div id="logindisplay">
 				<%
-					if (Request.IsAuthenticated) {
+                    if (HalfoxUser.HasLogOn)
+                    {
 				%>Welcome <b>
-					<%=Html.ActionLink(Page.User.Identity.Name, "Index", "Profile")%>
+					<%=Html.ActionLink(HalfoxUser.Name.IsNullOrEmpty() ? "Please complete your profile." : HalfoxUser.Name, "Index", "Profile")%>
 					!</b> [
-					<% if (Page.User.IsInRole("Admin")) {%>
+					<% if (Page.User.IsInRole("Admin"))
+        {%>
 					<%=Html.ActionLink("Management", "Index", "Admin")%>,
 					<%} %>
 					<%=Html.ActionLink("ChangePassword", "ChangePassword", "Account")%>,
-					<%=Html.ActionLink("Logout", "Logout", "Account") %>
+					<%=Html.ActionLink("Logout", "Logout", "Api")%>
 				]
 				<%
-					}
-						else {
+                    }
+                    else
+                    {
 				%>
 				[
 				<%= Html.ActionLink("Register", "Register", "Account")%>
 				] [
-				<%=Html.ActionLink("Login", "Login", "Account") %>
+				<%=Html.ActionLink("Login", "Login", "Account")%>
 				]
-				[<%=Html.ActionLink("LogOn with LiveId","LogOnWithLiveId","Account") %>]
 				<%
-					}
+                    }
 				%>
 			</div>
 			<div id="menucontainer">
 				<ul id="menu">
 					<li>
 						<%= Html.ActionLink("Home", "Index", "Home")%></li>
-					<li>Con</li>
 					<li>
 						<%= Html.ActionLink("About Us", "About", "Home")%></li>
 				</ul>

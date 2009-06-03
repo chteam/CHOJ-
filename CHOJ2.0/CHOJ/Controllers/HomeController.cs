@@ -4,21 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using CHOJ.OpenId;
 
 namespace CHOJ.Controllers {
 
 	public class HomeController : BaseController {
 		public ActionResult Index() {
-			ViewData["Title"] = "Home Page";
-			ViewData["Message"] = "Welcome to ASP.NET MVC!";
-
+		    Title = "CHOJ#";
 			return View();
 		}
 
 		public ActionResult About() {
-			ViewData["Title"] = "About Page";
-
+		    Title = "About CHOJ#";
 			return View();
 		}
+
 	}
 }
