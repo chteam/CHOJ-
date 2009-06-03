@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 		DLL\IBatisNet.DataMapper.dll = DLL\IBatisNet.DataMapper.dll
 		DLL\log4net.dll = DLL\log4net.dll
 		DLL\Microsoft.SqlServices.Data.SDK.Common.dll = DLL\Microsoft.SqlServices.Data.SDK.Common.dll
+		DLL\System.Threading.dll = DLL\System.Threading.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.AccessDao\CHOJ.AccessDao.csproj", "{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}"
@@ -46,9 +47,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sds", "Sds", "{3B6220AE-129
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.SdsDao", "CHOJ.SdsDao\CHOJ.SdsDao.csproj", "{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Samples.Cloud.Data", "Microsoft.Samples.Cloud.Data\Microsoft.Samples.Cloud.Data.csproj", "{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Cloud.Storage.PExtensions", "Microsoft.Cloud.Storage.PExtensions\Microsoft.Cloud.Storage.PExtensions.csproj", "{7D879C50-D736-4FA7-A4BB-8E95FD94042D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2FF31CA-5A57-4585-B5F6-630FA12DD391}"
+	ProjectSection(SolutionItems) = preProject
+		CustomDictionary.xml = CustomDictionary.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 14
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -99,6 +109,14 @@ Global
 		SccProjectTopLevelParentUniqueName13 = CHOJ.sln
 		SccProjectName13 = CHOJ.SdsDao
 		SccLocalPath13 = CHOJ.SdsDao
+		SccProjectUniqueName14 = Microsoft.Samples.Cloud.Data\\Microsoft.Samples.Cloud.Data.csproj
+		SccProjectTopLevelParentUniqueName14 = CHOJ.sln
+		SccProjectName14 = Microsoft.Samples.Cloud.Data
+		SccLocalPath14 = Microsoft.Samples.Cloud.Data
+		SccProjectUniqueName15 = Microsoft.Cloud.Storage.PExtensions\\Microsoft.Cloud.Storage.PExtensions.csproj
+		SccProjectTopLevelParentUniqueName15 = CHOJ.sln
+		SccProjectName15 = Microsoft.Cloud.Storage.PExtensions
+		SccLocalPath15 = Microsoft.Cloud.Storage.PExtensions
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +175,14 @@ Global
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D879C50-D736-4FA7-A4BB-8E95FD94042D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D879C50-D736-4FA7-A4BB-8E95FD94042D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D879C50-D736-4FA7-A4BB-8E95FD94042D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D879C50-D736-4FA7-A4BB-8E95FD94042D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,5 +196,7 @@ Global
 		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1} = {6C174504-22B1-4D13-B655-C604F532BB41}
 		{2DC196D0-E574-4F11-A235-8987DC8FFB79} = {6C174504-22B1-4D13-B655-C604F532BB41}
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
+		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
+		{7D879C50-D736-4FA7-A4BB-8E95FD94042D} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
 	EndGlobalSection
 EndGlobal

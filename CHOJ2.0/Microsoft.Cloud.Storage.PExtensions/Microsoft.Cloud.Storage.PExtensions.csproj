@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}</ProjectGuid>
+    <ProjectGuid>{7D879C50-D736-4FA7-A4BB-8E95FD94042D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHOJ.SdsDao</RootNamespace>
-    <AssemblyName>CHOJ.SdsDao</AssemblyName>
+    <RootNamespace>Microsoft.Cloud.Storage.PExtensions</RootNamespace>
+    <AssemblyName>Microsoft.Cloud.Storage.PExtensions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -25,6 +25,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,13 +37,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServices.Data.SDK.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Microsoft.SqlServices.Data.SDK.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Threading, Version=1.0.3058.34407, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,13 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProfileDao.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="SsdsContainerParallelismExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
-      <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
-      <Name>CHOJ.Abstractions</Name>
+    <ProjectReference Include="..\Microsoft.Samples.Cloud.Data\Microsoft.Samples.Cloud.Data.csproj">
+      <Project>{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}</Project>
+      <Name>Microsoft.Samples.Cloud.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

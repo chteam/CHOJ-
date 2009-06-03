@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}</ProjectGuid>
+    <ProjectGuid>{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHOJ.SdsDao</RootNamespace>
-    <AssemblyName>CHOJ.SdsDao</AssemblyName>
+    <RootNamespace>Microsoft.Samples.Cloud.Data</RootNamespace>
+    <AssemblyName>Microsoft.Samples.Cloud.Data</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -25,6 +25,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,32 +37,49 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServices.Data.SDK.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Microsoft.SqlServices.Data.SDK.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel.Web">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProfileDao.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Linq\Evaluator.cs" />
+    <Compile Include="Linq\ExpressionVisitor.cs" />
+    <Compile Include="Rest\ConcurrencyPattern.cs" />
+    <Compile Include="Rest\HttpRestUriTemplates.cs" />
+    <Compile Include="Rest\HttpVerbs.cs" />
+    <Compile Include="Linq\Nominator.cs" />
+    <Compile Include="Linq\SsdsExpressionVisitor.cs" />
+    <Compile Include="Linq\SubTreeEvaluator.cs" />
+    <Compile Include="ExpressionHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\RequestContentTypes.cs" />
+    <Compile Include="SsdsBlobEntity.cs" />
+    <Compile Include="SsdsBucket.cs" />
+    <Compile Include="SsdsConnectionString.cs" />
+    <Compile Include="SsdsContext.cs" />
+    <Compile Include="SsdsEntity.cs" />
+    <Compile Include="SsdsEntitySerializer.cs" />
+    <Compile Include="Rest\SsdsRestFacade.cs" />
+    <Compile Include="SsdsContainer.cs" />
+    <Compile Include="XsdTypeResolver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
-      <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
-      <Name>CHOJ.Abstractions</Name>
-    </ProjectReference>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>Properties\CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
