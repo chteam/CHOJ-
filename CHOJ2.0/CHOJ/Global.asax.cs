@@ -9,11 +9,15 @@ namespace CHOJ {
 	public class MvcApplication : System.Web.HttpApplication {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+		    routes.MapRoute(
+		        "Api",
+		        "{action}",
+		        new {controller = "Api"}
+		        );
 			routes.MapRoute(
-				"Default",                                              // Route name
-				"{controller}/{action}",                           // URL with parameters
-				new { controller = "Home", action = "Index"}  // Parameter defaults
+				"Default",                                  
+				"{controller}/{action}",                    
+				new { controller = "Home", action = "Index"}
 			);
 
 		}

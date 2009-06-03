@@ -36,13 +36,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{345EAFFE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageClientAPISample", "StorageClient\StorageClientAPISample\StorageClientAPISample.csproj", "{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspProviders", "AspProviders\Lib\AspProviders.csproj", "{306D2F9E-D6D0-4D96-94F1-173C60A13875}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TWitter", "TWitter", "{6C174504-22B1-4D13-B655-C604F532BB41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitter", "LinqToTwitter\LinqToTwitter.csproj", "{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitterTests", "LinqToTwitterTests\LinqToTwitterTests.csproj", "{2DC196D0-E574-4F11-A235-8987DC8FFB79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sds", "Sds", "{3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.SdsDao", "CHOJ.SdsDao\CHOJ.SdsDao.csproj", "{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -85,18 +87,18 @@ Global
 		SccProjectTopLevelParentUniqueName10 = CHOJ.sln
 		SccProjectName10 = StorageClient/StorageClientAPISample
 		SccLocalPath10 = StorageClient\\StorageClientAPISample
-		SccProjectUniqueName11 = AspProviders\\Lib\\AspProviders.csproj
+		SccProjectUniqueName11 = LinqToTwitter\\LinqToTwitter.csproj
 		SccProjectTopLevelParentUniqueName11 = CHOJ.sln
-		SccProjectName11 = AspProviders/Lib
-		SccLocalPath11 = AspProviders\\Lib
-		SccProjectUniqueName12 = LinqToTwitter\\LinqToTwitter.csproj
+		SccProjectName11 = LinqToTwitter
+		SccLocalPath11 = LinqToTwitter
+		SccProjectUniqueName12 = LinqToTwitterTests\\LinqToTwitterTests.csproj
 		SccProjectTopLevelParentUniqueName12 = CHOJ.sln
-		SccProjectName12 = LinqToTwitter
-		SccLocalPath12 = LinqToTwitter
-		SccProjectUniqueName13 = LinqToTwitterTests\\LinqToTwitterTests.csproj
+		SccProjectName12 = LinqToTwitterTests
+		SccLocalPath12 = LinqToTwitterTests
+		SccProjectUniqueName13 = CHOJ.SdsDao\\CHOJ.SdsDao.csproj
 		SccProjectTopLevelParentUniqueName13 = CHOJ.sln
-		SccProjectName13 = LinqToTwitterTests
-		SccLocalPath13 = LinqToTwitterTests
+		SccProjectName13 = CHOJ.SdsDao
+		SccLocalPath13 = CHOJ.SdsDao
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,10 +145,6 @@ Global
 		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{306D2F9E-D6D0-4D96-94F1-173C60A13875}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -155,6 +153,10 @@ Global
 		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,8 +167,8 @@ Global
 		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
 		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
-		{306D2F9E-D6D0-4D96-94F1-173C60A13875} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
 		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1} = {6C174504-22B1-4D13-B655-C604F532BB41}
 		{2DC196D0-E574-4F11-A235-8987DC8FFB79} = {6C174504-22B1-4D13-B655-C604F532BB41}
+		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
 	EndGlobalSection
 EndGlobal
