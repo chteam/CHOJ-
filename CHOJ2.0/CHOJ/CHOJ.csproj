@@ -186,7 +186,8 @@
     <None Include="Web_Azure.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\AdminSite.Master" />
+    <Content Include="Views\Group\Management.aspx" />
+    <Content Include="Views\Shared\Admin.Master" />
     <None Include="Web_Access.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

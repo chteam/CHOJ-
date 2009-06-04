@@ -42,16 +42,13 @@
             <div id="menucontainer">
                 <ul id="menu">
                     <li>
-                        <%=Html.ActionLink("Management Home", "Index", "Admin")%></li>
-                    <li>Setting</li>
-                    <li>Manage Category</li>
-                    <li>Add Question</li>
-                    <li>Manage Question</li>
-                    <li>Manage User</li>
-                    <li>
-                        <%=Html.ActionLink("Clear Cache","ClearCache","Admin") %></li>
-                    <li>
-                        <%=Html.ActionLink("Return to CHOJ#","Index","Home") %></li>
+                        <%=Html.ActionLink("Home", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("Setting", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("Category", "Management", "Group")%></li>
+                    <li><%=Html.ActionLink("Question", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("User", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("Cache","ClearCache","Admin") %></li>
+                    <li><%=Html.ActionLink("CHOJ#","Index","Home") %></li>
                 </ul>
             </div>
         </div>

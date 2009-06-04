@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CHOJ.Abstractions;
 using CHOJ.Models;
@@ -30,15 +31,23 @@ namespace CHOJ.Service
         }
 
 
-       public  IList<Group> GroupList()
+       public  IEnumerable<Group> GroupList()
        {
            return GroupDao.GroupList();
        }
 
-        public Group GetGroup(long id)
+        public Group GetGroup(string  id)
         {
             return GroupDao.GetGroup(id);
         }
 
+        public void Add(Group group)
+        {
+            GroupDao.Add(group);
+        }
+        public void Delete(string id)
+        {
+            GroupDao.Delete(id);
+        }
     }
 }
