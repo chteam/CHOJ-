@@ -43,9 +43,8 @@
             </div>
             <div id="menucontainer">
                 <ul id="menu">
-                    <li>
-                        <%=Html.ActionLink("Home", "Index", "Admin")%></li>
-                    <li><%=Html.ActionLink("Setting", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("Home", "Index", "Admin")%></li>
+                    <li><%=Html.ActionLink("Wiki", "Management", "Wiki")%></li>
                     <li><%=Html.ActionLink("Category", "Management", "Group")%></li>
                     <li><%=Html.ActionLink("Question", "Management", "Question")%></li>
                     <li><%=Html.ActionLink("User", "Management", "Profile")%></li>

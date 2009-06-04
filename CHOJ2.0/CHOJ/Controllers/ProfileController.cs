@@ -33,5 +33,12 @@ namespace CHOJ.Controllers
             SetTitle(profile);
             return View(profile);
         }
+
+        public ActionResult RankList()
+        {
+           var model= ProfileService.GetInstance().RankList(100);
+           Title = "Rank List";
+           return View(model);
+        }
     }
 }

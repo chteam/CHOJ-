@@ -12,9 +12,9 @@ namespace CHOJ.Service
     public class AnswerService
     {
 
-		private static AnswerService _instance = new AnswerService();
-		private IDaoManager _daoManager;
-		private IAnswerDao _answerDao;
+		private static readonly AnswerService _instance = new AnswerService();
+		private readonly IDaoManager _daoManager;
+		private readonly IAnswerDao _answerDao;
 
 
 
@@ -38,23 +38,39 @@ namespace CHOJ.Service
 		{
 			return _instance;
 		}
-        public void SetAnswer(string questionId, string userId, int status,
-			string compilerName, int useTime, int useMemory,string guid)
+        public void SetAnswer(string questionId, string questionTitle, string userId, string userName, int status,
+			string compilerName, int useTime, int useMemory,string guid,string code)
         {
             var answer = new Answer
-                                {
-                                    Id = guid,
-                                    AddTime = DateTime.Now,
-                                    Complier = compilerName,
-                                    QuestionId = questionId,
-                                    Status = status,
-                                    Type = 0,
-                                    UseMemory = useMemory,
-                                    UserId = userId,
-                                    UseTime = useTime
-                                };
+                             {
+                                 Id = guid,
+                                 AddTime = DateTime.Now,
+                                 Complier = compilerName,
+                                 QuestionId = questionId,
+                                 Status = status,
+                                 Type = 0,
+                                 UseMemory = useMemory,
+                                 UserId = userId,
+                                 UseTime = useTime,
+                                 UserName = userName,
+                                 QuestionTitle = questionTitle,
+                                 Code = code,
+                             };
             AnswerDao.SaveAnswer(answer);
         }
+        public IEnumerable<Answer> Status(int page, int pageSize)
+        {
+            return AnswerDao.Status();
+        }
 
+        public IEnumerable<Answer> UserStatus(string userId, int page, int pageSize)
+        {
+            return AnswerDao.UserStatus(userId, page, pageSize);
+        }
+
+        public IEnumerable<Answer> QuestionStatus(string questionId, int page, int pageSize)
+        {
+            return AnswerDao.QuestionStatus(questionId, page, pageSize);
+        }
     }
 }

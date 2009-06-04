@@ -8,7 +8,7 @@ namespace CHOJ.Controllers {
 		public ActionResult Index(string id) {
 			ViewData["comefrom"] = Request.UrlReferrer;
             var d = QuestionService.GetInstance().All().FirstOrDefault(c => c.Id == id);
-			if (d == null) throw new OJException("不能为空");
+			if (d == null) throw new OJException("is not null");
             Title = d.Title;
 			return View(d);
 		}
@@ -44,6 +44,7 @@ namespace CHOJ.Controllers {
         }
         [LoginedFilter(Role = "Admin")]
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
         public ActionResult Create(Question question)
         {
             QuestionService.GetInstance().Create(question);

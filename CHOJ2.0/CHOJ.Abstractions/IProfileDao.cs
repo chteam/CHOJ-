@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CHOJ.Models;
 
 namespace CHOJ.Abstractions
@@ -7,5 +8,7 @@ namespace CHOJ.Abstractions
         string Update(Profile profile);
         Profile Details(string openId,string idType);
         string GetNickName(string openId, string idType);
+
+        IEnumerable<Profile> RankList(int n);
     }
 }

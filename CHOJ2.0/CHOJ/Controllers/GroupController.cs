@@ -5,7 +5,7 @@ using CHOJ.Models;
 namespace CHOJ.Controllers {
 	public class GroupController : BaseController {
 		public ActionResult List() {
-		    Title = "分类列表";
+		    Title = "Category List";
             var ret = GroupService.GetInstance().GroupList();
 			return View(ret);
 		}

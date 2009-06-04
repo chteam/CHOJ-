@@ -13,6 +13,10 @@ namespace CHOJ.Models
         public DateTime AddTime { get; set; }
         public int Status { get; set; }
         public string UserId { get; set; }
+        public string UserName { get; set; }
+        public string QuestionTitle { get; set; }
         public string QuestionId { get; set; }
+
+        public string  Code { get; set; }
     }
 }

@@ -44,7 +44,14 @@
 				<ul id="menu">
 					<li>
 						<%= Html.ActionLink("Home", "Index", "Home")%></li>
-					<li>
+				
+						<li>
+			<%=Html.ActionLink("Problems Online","List","Group") %></li>
+			<li>
+			<%=Html.ActionLink("Status", "Status", "Answer")%></li>
+			<li>
+			<%=Html.ActionLink("Rank List", "RankList", "Profile")%></li>
+			<li>	<li>
 						<%= Html.ActionLink("About Us", "About", "Home")%></li>
 				</ul>
 			</div>

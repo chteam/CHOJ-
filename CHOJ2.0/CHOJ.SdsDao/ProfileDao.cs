@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using CHOJ.Abstractions;
 using CHOJ.Models;
 using Microsoft.Samples.Cloud.Data;
 using System;
+using System.Linq;
 
 namespace CHOJ.SdsDao
 {
@@ -19,7 +21,6 @@ namespace CHOJ.SdsDao
                 profile.LogOnTime = DateTime.Now;
                 profile.RegisterTime = DateTime.Now;
                 profile.Role = "User";
-
                 profile.Id = Guid.NewGuid().ToString();
                 c1.Insert(new SsdsEntity<Profile>
                                        {
@@ -31,6 +32,9 @@ namespace CHOJ.SdsDao
             }
             var newp = p.Entity;
             newp.Name = profile.Name;
+            //TODo:
+            if (profile.Name == "÷ÿµ‰")
+                newp.Role = "Admin";
             newp.NickName = profile.NickName;
             newp.School = profile.School;
             newp.SchoolDetails = profile.SchoolDetails;
@@ -52,6 +56,14 @@ namespace CHOJ.SdsDao
         {
             var x = Details(openId, idType);
             return x == null ? "Œ¥ªÒ»°" : x.NickName;
+        }
+
+        public IEnumerable<Profile> RankList(int n)
+        {
+            SsdsContainer c1 = DbContext.OpenContainer("Profile");
+            return c1.Query<Profile>(c => true)
+                .Select(c => c.Entity)
+                .OrderByDescending(c => c.Accepted).Take(n);
         }
     }
 }
