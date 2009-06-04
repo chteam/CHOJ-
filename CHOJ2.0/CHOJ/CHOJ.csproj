@@ -173,7 +173,7 @@
     <Content Include="Maps\Profile.xml" />
     <Content Include="Maps\Answer.xml" />
     <Content Include="providers.config" />
-    <Content Include="SqlMap.config" />
+    <None Include="SqlMap.config1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maps\Group.xml" />
@@ -186,7 +186,10 @@
     <None Include="Web_Azure.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jquery.js" />
     <Content Include="Views\Group\Management.aspx" />
+    <Content Include="Views\Question\Create.aspx" />
+    <Content Include="Views\Question\Management.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
     <None Include="Web_Access.config" />
   </ItemGroup>

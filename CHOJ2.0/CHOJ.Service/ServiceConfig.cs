@@ -2,6 +2,7 @@ using System;
 using IBatisNet.Common.Utilities;
 using IBatisNet.DataAccess;
 using IBatisNet.DataAccess.Configuration;
+using IBatisNet.DataAccess.SessionStore;
 
 namespace CHOJ.Service
 {
@@ -28,11 +29,12 @@ namespace CHOJ.Service
                         {
                             var builder = new DomDaoManagerBuilder();
                             builder.ConfigureAndWatch("dao.config", handler); 
-                    //         IBatisNet.DataAccess.DaoManager.ConfigureAndWatch(handler);
+                     
+                             //IBatisNet.DataAccess.DaoManager.ConfigureAndWatch(handler);
           //                  var builder = new DomDaoManagerBuilder();
             //                builder.ConfigureAndWatch(handler);
                           //  builder.Configure();
-
+                          
                         }
                         catch (Exception e)
                         {
@@ -42,7 +44,9 @@ namespace CHOJ.Service
                         _instance = new ServiceConfig
                                         {
                                             DaoManager = IBatisNet.DataAccess.DaoManager.GetInstance("SqlMapDao")
+                                            
                                         };
+                    //_instance.DaoManager.SessionStore = new HybridWebThreadSessionStore(_instance.DaoManager.Id);
                     }
                 }
             }

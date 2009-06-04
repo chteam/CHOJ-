@@ -30,6 +30,7 @@ namespace CHOJ.Controllers
                 {
                     HalfoxUser.Name = currentProfile.NickName ?? "Please setting your profile.";
                     HalfoxUser.Role = currentProfile.Role;
+                    HalfoxUser.Id = currentProfile.Id;
                 }
 
 

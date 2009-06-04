@@ -13,9 +13,9 @@
   </database>
   <sqlMaps>
     <!--<sqlMap resource="Maps/Answer.xml" />-->
-    <sqlMap resource="Maps/Question.xml"/>
+    <!--<sqlMap resource="Maps/Question.xml"/>-->
     <!--<sqlMap resource="Maps/Profile.xml"/>-->
-    <sqlMap resource="Maps/Group.xml"/>
+    <!--<sqlMap resource="Maps/Group.xml"/>-->
   </sqlMaps>
 
 </sqlMapConfig>

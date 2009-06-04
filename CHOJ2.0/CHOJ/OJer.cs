@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.CodeDom.Compiler;
 using System.Diagnostics;
 using System.Threading;
-using System.Configuration;
+using CHOJ.Models;
+using CHOJ.Service;
+
 namespace CHOJ {
 	public class OJer {
 		#region init
-		public string Username { get; set; }
+		public string UserId { get; set; }
 
 		public string Code { get; set; }
 		public Compiler Compiler { get; set; }
-		public DataRow Question { get; set; }
+		public Question Question { get; set; }
 		public Guid Guid { get; set; }
 		public string  RootPath { get; set; }
 		public string ExeFile { get; set; }
@@ -31,22 +32,18 @@ namespace CHOJ {
 			}
 		}
 	//	DataBaseExecutor DB { get; set; }
-		long UseTime { get; set; }
-		long UseMemory { get; set; }
-        public OJer(string username, string code, Guid guid, long questionId, string siteRoot)
+		int UseTime { get; set; }
+		int UseMemory { get; set; }
+        public OJer(string userId, string code, Guid guid, string questionId, string siteRoot)
         {
-            var db =
-                new DataBaseExecutor(
-                    new OleDbDataOpener(ConfigurationManager.ConnectionStrings["AccessFileName"].ConnectionString));
             Guid = Guid.NewGuid();
-            Username = username;
+            UserId = userId;
             Code = code;
             Compiler = ConfigSerializer.Load<List<Compiler>>("Compiler").Where(c => c.Guid == guid).FirstOrDefault();
-            Question = QuestionHelper.Question(db, questionId);
+            Question = QuestionService.GetInstance().All().FirstOrDefault(c => c.Id == questionId);
             RootPath = siteRoot;
             AnswerType = AnswerType.Queuing;
             ExeFile = RootPath + string.Format(@"temp\{0}.exe", guid);
-            db.Dispose();
         }
 
 	    #endregion
@@ -73,17 +70,11 @@ namespace CHOJ {
 		    {
 		        AnswerType = AnswerType.DangerCode;
 		    }
-		    var db = new DataBaseExecutor(new OleDbDataOpener(ConfigurationManager.ConnectionStrings["AccessFileName"].ConnectionString));
-			AnswerHelper.SaveAnswer(db,
-				Question.Field<int>("id"),
-				Username,
-				(int)AnswerType,
-				Compiler.Name,
-				UseTime,
-				UseMemory,
-				Guid
-				);
-			db.Dispose();
+
+		    AnswerService.GetInstance().SetAnswer(Question.Id, UserId, (int) AnswerType, Compiler.Name,
+		                                          UseTime,
+		                                          UseMemory,
+		                                          Guid.ToString());
            if(!Directory.Exists(RootPath + @"SourceCode\"))
            {
                Directory.CreateDirectory(RootPath + @"SourceCode\");
@@ -106,7 +97,7 @@ namespace CHOJ {
 	    readonly StringBuilder _systemOutString = new StringBuilder();
 	    readonly StringBuilder _currentOutString = new StringBuilder();
 		void Test() {
-			var testFile = Question["Test"].ToString();
+			var testFile = Question.Test;
 			String input;
 			var p = new Process
 			            {
@@ -169,16 +160,16 @@ namespace CHOJ {
 		private void ProcessExited(object sender, EventArgs e) {//测试程序是否超时的判断
 			var p = sender as Process;
 			var outtime = 0;
-			while (!OutputOver && _currentOutString.Length == 0 && outtime < 100) {
+			while (!_outputOver && _currentOutString.Length == 0 && outtime < 100) {
 				Thread.Sleep(10);
 				outtime++;
 			}
 			//p.OutputDataReceived;
 			var f = (_systemOutString.ToString() == _currentOutString.ToString());
-			UseTime = Convert.ToInt64(p.TotalProcessorTime.TotalMilliseconds);
-			UseMemory = p.PeakWorkingSet64 >> 10;
-			var systemMemory = Convert.ToInt64(Question["MemoryLimit"]);
-			var systemTime = Convert.ToInt64(Question["TimeLimit"]);
+			UseTime = Convert.ToInt32(p.TotalProcessorTime.TotalMilliseconds);
+			UseMemory = Convert.ToInt32(p.PeakWorkingSet64 >> 10);
+			var systemMemory = Question.MemoryLimit;
+			var systemTime = Question.TimeLimit;
 			switch (p.ExitCode) {
 				case 0:
 					if (UseMemory > systemMemory) {//内存消耗太大
@@ -208,12 +199,12 @@ namespace CHOJ {
 					break;
 			}
 		}
-		Boolean OutputOver;
+		Boolean _outputOver;
 		private void TestOutputHandler(object sender, DataReceivedEventArgs outLine) {
 		    if (String.IsNullOrEmpty(outLine.Data)) return;
 		    _currentOutString.AppendLine(outLine.Data);
 		    if (((Process) sender).HasExited)
-		        OutputOver = true;
+		        _outputOver = true;
 		}
 		private void ErrorHandler(object sender, DataReceivedEventArgs outLine) {
 //            out
