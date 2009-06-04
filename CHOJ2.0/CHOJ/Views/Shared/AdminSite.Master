@@ -1,0 +1,66 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <%= Html.Encode(ViewData["Page_Title"]) %></title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>
+                    CHOJ# Management</h1>
+            </div>
+            <div id="logindisplay">
+                <%
+                    if (HalfoxUser.HasLogOn)
+                    {
+                %>Welcome <b>
+                    <%=Html.ActionLink(HalfoxUser.Name.IsNullOrEmpty() ? "Please complete your profile." : HalfoxUser.Name, "Index", "Profile")%>
+                    !</b> [
+                <% if (HalfoxUser.Role == "Admin")
+                   {%>
+                <%=Html.ActionLink("Management", "Index", "Admin")%>,
+                <%} %>
+                <%=Html.ActionLink("Logout", "Logout", "Api")%>
+                ]
+                <%
+                    }
+                    else
+                    {
+                %>[
+                <%=Html.ActionLink("LogOn/Register", "Login", "Account")%>
+                ]
+                <%
+                    }
+                %>
+            </div>
+            <div id="menucontainer">
+                <ul id="menu">
+                    <li>
+                        <%=Html.ActionLink("Management Home", "Index", "Admin")%></li>
+                    <li>Setting</li>
+                    <li>Manage Category</li>
+                    <li>Add Question</li>
+                    <li>Manage Question</li>
+                    <li>Manage User</li>
+                    <li>
+                        <%=Html.ActionLink("Clear Cache","ClearCache","Admin") %></li>
+                    <li>
+                        <%=Html.ActionLink("Return to CHOJ#","Index","Home") %></li>
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div id="footer">
+                Eice.com.cn &copy; Copyright 2008
+            </div>
+        </div>
+    </div>
+</body>
+</html>
