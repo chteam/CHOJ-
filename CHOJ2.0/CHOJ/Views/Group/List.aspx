@@ -7,7 +7,7 @@
        
        %>
 		<li>
-		<%=Html.QuestionList(dr.Name, dr.ID)%></li>
+		<%=Html.QuestionList(dr.Name, dr.Id)%></li>
 	<%} %>
 	</ul>
 	</div>

@@ -10,7 +10,7 @@
     /// to retrieve strongly typed objects while making queries 
     /// to a container inside it.
     /// </summary>
-    public class SsdsContext
+    public class SsdsContext:IDisposable
     {
         /// <summary>
         /// Holds a reference to the connection string used during the object life-cycle.
@@ -112,6 +112,11 @@
                 ));
 
             return new SsdsRestFacade(this.connectionString.UserName, this.connectionString.Password, uri);
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

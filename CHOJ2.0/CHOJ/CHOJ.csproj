@@ -89,6 +89,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Filter\LogOnFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,10 +138,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccessProviders\AccessProviders.csproj">
-      <Project>{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}</Project>
-      <Name>AccessProviders</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
       <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
       <Name>CHOJ.Abstractions</Name>

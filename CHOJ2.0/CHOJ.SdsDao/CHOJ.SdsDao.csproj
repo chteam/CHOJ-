@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\CHOJ\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,9 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServices.Data.SDK.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="IBatisNet.DataAccess, Version=1.9.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Microsoft.SqlServices.Data.SDK.Common.dll</HintPath>
+      <HintPath>..\DLL\IBatisNet.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDao.cs" />
     <Compile Include="ProfileDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +61,14 @@
     <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
       <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
       <Name>CHOJ.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Cloud.Storage.PExtensions\Microsoft.Cloud.Storage.PExtensions.csproj">
+      <Project>{7D879C50-D736-4FA7-A4BB-8E95FD94042D}</Project>
+      <Name>Microsoft.Cloud.Storage.PExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Samples.Cloud.Data\Microsoft.Samples.Cloud.Data.csproj">
+      <Project>{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}</Project>
+      <Name>Microsoft.Samples.Cloud.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
