@@ -54,8 +54,11 @@
     </Reference>
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Routing">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>True</Private>
@@ -146,9 +149,9 @@
       <Project>{AF5D2801-A8E7-4CDC-815F-4813672C186E}</Project>
       <Name>CHOJ.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHOJ.Data\CHOJ.Data.csproj">
-      <Project>{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}</Project>
-      <Name>CHOJ.Data</Name>
+    <ProjectReference Include="..\CHOJ.SdsDao\CHOJ.SdsDao.csproj">
+      <Project>{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}</Project>
+      <Name>CHOJ.SdsDao</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHOJ.Service\CHOJ.Service.csproj">
       <Project>{3F7D98AA-A4C0-4BCC-9671-0DD15782DA01}</Project>
@@ -156,8 +159,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ASPNetDB.mdb">
-    </Content>
     <Content Include="Config\Compiler.xml" />
     <Content Include="Config\CSharp.txt" />
     <Content Include="Config\VisualBasic.txt" />
@@ -188,10 +189,14 @@
   <ItemGroup>
     <Content Include="Content\jquery.js" />
     <Content Include="Views\Group\Management.aspx" />
+    <Content Include="Views\Profile\RankList.aspx" />
     <Content Include="Views\Question\Create.aspx" />
     <Content Include="Views\Question\Management.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
     <None Include="Web_Access.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

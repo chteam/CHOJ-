@@ -4,8 +4,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="center">
 		<form action="<%=Url.Action("SubmitProcess")%>" method="post">
-		User's Id :
-		<input name="UserId" type="text" value="<%=ViewData["UserId"] %>" readonly="readonly" /><br />
 		Problem Id :<%=Html.TextBox("QuestionId")%><br />
 		Compiler :<%=Html.DropDownList("Compiler")%><br />
 		Code :<textarea name="Code" rows="2" cols="20" style="height: 237px; width: 416px;"></textarea><br />

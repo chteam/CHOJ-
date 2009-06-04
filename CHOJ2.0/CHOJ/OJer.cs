@@ -14,7 +14,7 @@ namespace CHOJ {
 	public class OJer {
 		#region init
 		public string UserId { get; set; }
-
+	    public string UserName { get; set; }
 		public string Code { get; set; }
 		public Compiler Compiler { get; set; }
 		public Question Question { get; set; }
@@ -34,8 +34,9 @@ namespace CHOJ {
 	//	DataBaseExecutor DB { get; set; }
 		int UseTime { get; set; }
 		int UseMemory { get; set; }
-        public OJer(string userId, string code, Guid guid, string questionId, string siteRoot)
+        public OJer(string userId,string userName, string code, Guid guid, string questionId, string siteRoot)
         {
+            UserName = userName;
             Guid = Guid.NewGuid();
             UserId = userId;
             Code = code;
@@ -71,10 +72,14 @@ namespace CHOJ {
 		        AnswerType = AnswerType.DangerCode;
 		    }
 
-		    AnswerService.GetInstance().SetAnswer(Question.Id, UserId, (int) AnswerType, Compiler.Name,
+		    AnswerService.GetInstance().SetAnswer(Question.Id, Question.Title,
+		                                          UserId, UserName,
+		                                          (int) AnswerType,
+		                                          Compiler.Name,
 		                                          UseTime,
 		                                          UseMemory,
-		                                          Guid.ToString());
+		                                          Guid.ToString(),
+		                                          Code);
            if(!Directory.Exists(RootPath + @"SourceCode\"))
            {
                Directory.CreateDirectory(RootPath + @"SourceCode\");

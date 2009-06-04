@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	 Inherits="System.Web.Mvc.ViewPage" %>
+	 Inherits="System.Web.Mvc.ViewPage<IEnumerable<Answer>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<span>
@@ -19,56 +19,19 @@
 				</tr>
 				<%
 					bool line = false ;
-					foreach (System.Data.DataRow dr in ViewData["source"] as IEnumerable<System.Data.DataRow>) {
+					foreach (Answer a in Model) {
 						line = !line;
 		   %>
 		   		<tr class="<%=line?"rb":"re" %>">
-					<td><%=dr["id"] %></td>
-					<td><%=dr["addtime"]%></td>
-					<td><%=Html.QuestionLink(dr["Title"].ToString(), dr["QuestionID"])%></td>
-					<td><%=Html.Status(dr["Status"],dr["Guid"])%></td>
-					<td><%=dr["Complier"]%></td>
-					<td><%=dr["Username"]%></td>
+					<td>-</td>
+					<td><%=a.AddTime.ToString("hh:mm:ss")%></td>
+					<td><%=Html.QuestionLink((a.QuestionTitle??"")+" ", a.QuestionId)%></td>
+					<td><%=Html.Status(a.Status,a.Id)%></td>
+					<td><%=a.Complier%></td>
+					<td><%=a.UserName%></td>
 				</tr>
 				<%} %>				
-		<%--		<tr class="pg">
-					<td colspan="6">
-						<table border="0">
-							<tr>
-								<td>
-									<span>1</span>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$2')">2</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$3')">3</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$4')">4</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$5')">5</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$6')">6</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$7')">7</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$8')">8</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$9')">9</a>
-								</td>
-								<td>
-									<a href="javascript:__doPostBack('ctl00$Content$GridView1','Page$10')">10</a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>--%>
+
 			</table>
 		</div>
 	</div>

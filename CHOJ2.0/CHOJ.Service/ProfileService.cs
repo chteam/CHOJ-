@@ -1,7 +1,7 @@
 using CHOJ.Abstractions;
 using CHOJ.Models;
 using IBatisNet.DataAccess;
-
+using System.Collections.Generic;
 namespace CHOJ.Service
 {
     public class ProfileService
@@ -46,5 +46,10 @@ namespace CHOJ.Service
             return ProfileDao.GetNickName(HalfoxUser.OpenId, HalfoxUser.IdType);
         }
 
+
+        public IEnumerable<Profile> RankList(int n)
+        {
+            return ProfileDao.RankList(n);
+        }
     }
 }

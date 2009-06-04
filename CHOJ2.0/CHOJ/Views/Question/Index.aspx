@@ -39,8 +39,7 @@
 		<div class="center">
 			<%=Html.SubmitLink("Submit",Model.Id) %>
 			<a href="<%=ViewData["comefrom"]  %>">Back</a> 
+			<%=Html.ActionLink("Status", "QuestionStatus", "Answer", new { qId = Model.Id, title =Model.Title}, null)%>
 			
-			<a href="Status.aspx?id=1">
-				Status</a>
 		</div>
 </asp:Content>

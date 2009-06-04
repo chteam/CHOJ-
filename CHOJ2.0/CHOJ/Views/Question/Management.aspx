@@ -38,14 +38,9 @@
                 AddTime
             </th>
             <th>
-                GroupId
-            </th>
-            <th>
                 IsTrue
             </th>
-            <th>
-                Test
-            </th>
+ 
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -77,13 +72,7 @@
                 <%= Html.Encode(String.Format("{0:g}", item.AddTime)) %>
             </td>
             <td>
-                <%= Html.Encode(item.GroupId) %>
-            </td>
-            <td>
                 <%= Html.Encode(item.IsTrue) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Test) %>
             </td>
         </tr>
     
