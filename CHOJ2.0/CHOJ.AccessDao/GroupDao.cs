@@ -15,7 +15,7 @@ namespace CHOJ.AccessDao
             return rows;
         }
         public Group GetGroup(long id) {
-            var rets = GroupTable().AsEnumerable().FirstOrDefault(c => c.ID == id);
+            var rets = GroupTable().AsEnumerable().FirstOrDefault(c => c.Id == id);
             if (rets != null) return rets;
             return null;
         }

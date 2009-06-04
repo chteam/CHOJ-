@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 
 namespace CHOJ.Controllers {
-	[Authorize(Roles="Admin")]
+	[LoginedFilter]
 	public class AdminController :BaseController {
 		public ActionResult Index() {
 			return View();

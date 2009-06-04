@@ -11,8 +11,8 @@ namespace CHOJ {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 		    routes.MapRoute(
 		        "Api",
-		        "{action}",
-		        new {controller = "Api"}
+		        "LiveId",
+		        new {controller = "Api", action = "LiveId"}
 		        );
 			routes.MapRoute(
 				"Default",                                  

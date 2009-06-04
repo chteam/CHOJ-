@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using CHOJ.OpenId;
+using CHOJ.Service;
 
 namespace CHOJ.Controllers
 {
@@ -22,7 +23,16 @@ namespace CHOJ.Controllers
             if (user != null)
             {
                 HalfoxUser.Value = user.Token;
-                HalfoxUser.Id = user.Id;
+                HalfoxUser.OpenId = user.Id;
+                HalfoxUser.IdType = "live";
+                var currentProfile = ProfileService.GetInstance().Get();
+                if (currentProfile != null)
+                {
+                    HalfoxUser.Name = currentProfile.NickName ?? "Please setting your profile.";
+                    HalfoxUser.Role = currentProfile.Role;
+                }
+
+
                 if (user.UsePersistentCookie)
                 {
                     HalfoxUser.Expires = PersistCookie;

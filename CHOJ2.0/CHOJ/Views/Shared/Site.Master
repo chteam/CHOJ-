@@ -21,22 +21,18 @@
 				%>Welcome <b>
 					<%=Html.ActionLink(HalfoxUser.Name.IsNullOrEmpty() ? "Please complete your profile." : HalfoxUser.Name, "Index", "Profile")%>
 					!</b> [
-					<% if (Page.User.IsInRole("Admin"))
+					<% if (HalfoxUser.Role=="Admin")
         {%>
 					<%=Html.ActionLink("Management", "Index", "Admin")%>,
 					<%} %>
-					<%=Html.ActionLink("ChangePassword", "ChangePassword", "Account")%>,
 					<%=Html.ActionLink("Logout", "Logout", "Api")%>
 				]
 				<%
                     }
                     else
                     {
-				%>
-				[
-				<%= Html.ActionLink("Register", "Register", "Account")%>
-				] [
-				<%=Html.ActionLink("Login", "Login", "Account")%>
+				%>[
+				<%=Html.ActionLink("LogOn/Register", "Login", "Account")%>
 				]
 				<%
                     }
