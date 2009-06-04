@@ -8,8 +8,8 @@ namespace CHOJ.Models
 {
     public class Group
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
+        public string Id { get; set; }
+        public string Title { get; set; }
         public int QuestionCount { get; set; }
         public int Order { get; set; }
         public int Type { get; set; }
