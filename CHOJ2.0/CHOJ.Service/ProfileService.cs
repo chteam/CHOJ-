@@ -37,7 +37,8 @@ namespace CHOJ.Service
         {
             profile.OpenId = HalfoxUser.OpenId;
             profile.IdType = HalfoxUser.IdType;
-            ProfileDao.Update(profile);
+            var id = ProfileDao.Update(profile);
+            HalfoxUser.Id = id;
             HalfoxUser.Name = profile.NickName;
         }
         public string GetNickName()

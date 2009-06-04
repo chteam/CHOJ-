@@ -19,24 +19,24 @@ namespace CHOJ.SdsDao
                 profile.LogOnTime = DateTime.Now;
                 profile.RegisterTime = DateTime.Now;
                 profile.Role = "User";
+
+                profile.Id = Guid.NewGuid().ToString();
                 c1.Insert(new SsdsEntity<Profile>
                                        {
-                                           Id = Guid.NewGuid().ToString(),
+                                           Id = profile.Id,
                                            Kind = "Profile",
                                            Entity = profile,
                                        });
+                return profile.Id;
             }
-            else
-            {
-                var newp = p.Entity;
-                newp.Name = profile.Name;
-                newp.NickName = profile.NickName;
-                newp.School = profile.School;
-                newp.SchoolDetails = profile.SchoolDetails;
-                newp.Sex = profile.Sex;
-                c1.Update(newp, p.Id, ConcurrencyPattern.IfNoneMatch);
-            }
-            return "";
+            var newp = p.Entity;
+            newp.Name = profile.Name;
+            newp.NickName = profile.NickName;
+            newp.School = profile.School;
+            newp.SchoolDetails = profile.SchoolDetails;
+            newp.Sex = profile.Sex;
+            c1.Update(newp, p.Id, ConcurrencyPattern.IfNoneMatch);
+            return p.Id;
         }
 
         public Profile Details(string openId, string idType)

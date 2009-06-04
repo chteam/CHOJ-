@@ -7,18 +7,19 @@ using System.Threading;
 using System.Data;
 namespace CHOJ.Controllers {
 	public class AnswerController : BaseController {
-		[Authorize]
-		public ActionResult Submit(long? id) {
+		[LoginedFilter]
+		public ActionResult Submit(string id) {
 			List<Compiler> li = ConfigSerializer.Load<List<Compiler>>("Compiler");
 			ViewData["Compiler"] = new SelectList(li, "Guid", "Name");
-			if (id.HasValue)
-				ViewData["QuestionId"] = id.Value;
-			ViewData["Username"] = User.Identity.Name;
+			if (!id.IsNullOrEmpty())
+				ViewData["QuestionId"] = id;
+			ViewData["UserId"] = HalfoxUser.Id;
 			return View();
 		}
-		[Authorize]
-		public ActionResult SubmitProcess(string Username, string Code, Guid Compiler, long QuestionId) {
-			OJer x = new OJer(Username, Code, Compiler, QuestionId, Server.MapPath("/"));
+        [LoginedFilter]
+		public ActionResult SubmitProcess(string userName, string code, Guid compiler
+            , string questionId) {
+			OJer x = new OJer(userName, code, compiler, questionId, Server.MapPath("/"));
 			ThreadPool.QueueUserWorkItem(new WaitCallback(x.Start));
 			Db.Dispose();
 		//	throw new OJException(.ToString());

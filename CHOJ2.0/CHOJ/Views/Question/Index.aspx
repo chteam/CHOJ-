@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	 Inherits="System.Web.Mvc.ViewPage" %>
+	 Inherits="System.Web.Mvc.ViewPage<Question>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-		<% System.Data.DataRow q = Model as System.Data.DataRow; %>
-		<h3><%=q["title"] %></h3>
+		
+		<h3><%=Model.Title %></h3>
 		<div class="center">
-			<span class="limit">Time limit:</span><%=q["TimeLimit"]%> Seconds			<span class="limit">Memory limit:</span><%=q["MemoryLimit"]%> K 
-			<span class="limit">Total submit:</span><%=q["SubmitCount"]%>&nbsp;&nbsp; 
-			<span class="limit">Accepted submit: </span><%=q["AcceptedCount"]%>
+			<span class="limit">Time limit:</span><%=Model.TimeLimit%> Seconds			<span class="limit">Memory limit:</span><%=Model.MemoryLimit%> K 
+			<span class="limit">Total submit:</span><%=Model.SubmitCount%>&nbsp;&nbsp; 
+			<span class="limit">Accepted submit: </span><%=Model.AcceptedCount%>
 		</div>
 		<div id="main">
 			<div id="contentHeadLeft">
@@ -21,7 +21,7 @@
 					<div id="contentBodyCenter">
 						<div id="content">
 							<div id="entries">
-						<%=Html.QuestionFormat(q["body"].ToString()) %>
+						<%=Html.QuestionFormat(Model.Body) %>
 							</div>
 						</div>
 						<div class="clear">
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="center">
-			<%=Html.SubmitLink("Submit",q["id"]) %>
+			<%=Html.SubmitLink("Submit",Model.Id) %>
 			<a href="<%=ViewData["comefrom"]  %>">Back</a> 
 			
 			<a href="Status.aspx?id=1">

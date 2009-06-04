@@ -4,6 +4,8 @@ namespace CHOJ.Models
 {
     public class Profile
     {
+        public string Id { get; set; }
+
         public string OpenId { get; set; }
         public string IdType { get; set; }
 

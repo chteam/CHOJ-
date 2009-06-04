@@ -5,6 +5,9 @@ namespace CHOJ.Abstractions
 {
     public interface IQuestionDao
     {
-        IList<Question> AllQuestion();
+        IEnumerable<Question> AllQuestion();
+        void Add(Question question);
+        void Update(Question question);
+        void Delete(string id);
     }
 }
