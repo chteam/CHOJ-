@@ -32,9 +32,8 @@ namespace CHOJ.SdsDao
             }
             var newp = p.Entity;
             newp.Name = profile.Name;
-            //TODo:
-            if (profile.Name == "÷ÿµ‰")
-                newp.Role = "Admin";
+            //if (profile.Name == "÷ÿµ‰")
+            //    newp.Role = "Admin";
             newp.NickName = profile.NickName;
             newp.School = profile.School;
             newp.SchoolDetails = profile.SchoolDetails;

@@ -26,7 +26,11 @@ namespace CHOJ.Controllers
         public ActionResult Details(string title)
         {
             var model = WikiService.GetInstance().Get(title);
+            if (model == null)
+                return RedirectToAction("Create");
             Title = model.Title;
+            var wikiEngine = new WikiEngine.WikiEngine();
+            model.Body = wikiEngine.Explain(model.Body);
             return View(model);
         }
 
@@ -43,11 +47,11 @@ namespace CHOJ.Controllers
         // POST: /Wiki/Create
         [LoginedFilter(Role="Admin")]
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
         public ActionResult Create(Wiki wiki)
         {
             try
             {
-                // TODO: Add insert logic here
                 WikiService.GetInstance().Add(wiki);
                 return RedirectToAction("Management");
             }
@@ -66,22 +70,22 @@ namespace CHOJ.Controllers
 
         //
         // GET: /Wiki/Edit/5
- 
-        public ActionResult Edit(int id)
+        [LoginedFilter(Role = "Admin")]
+        public ActionResult Edit(string id)
         {
-            return View();
+            var model = WikiService.GetInstance().GetById(id);
+            return View(model);
         }
 
         //
         // POST: /Wiki/Edit/5
-
+        [LoginedFilter(Role = "Admin")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Wiki wiki)
         {
             try
             {
-                // TODO: Add update logic here
-
+                WikiService.GetInstance().Update(wiki, id);
                 return RedirectToAction("Management");
             }
             catch

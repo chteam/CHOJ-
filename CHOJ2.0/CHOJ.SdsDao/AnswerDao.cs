@@ -13,6 +13,10 @@ namespace CHOJ.SdsDao
             //answer
             SsdsContainer c1 = DbContext.OpenContainer("Answer");
             c1.Insert(answer, answer.Id);
+
+            var count = c1.Query<Answer>(
+                c => c.Entity.QuestionId == answer.QuestionId &&
+                     c.Entity.Status == (int) AnswerType.Accepted).Count();
             //question
             var answerType = (AnswerType) answer.Status;
             var c2 = DbContext.OpenContainer("Question");
@@ -22,7 +26,7 @@ namespace CHOJ.SdsDao
             if (q != null)
             {
                 q.Entity.SubmitCount++;
-                if (answerType == AnswerType.Accepted)
+                if (answerType == AnswerType.Accepted && count == 1)
                     q.Entity.AcceptedCount++;
                 c2.Update(q);
             }
@@ -33,7 +37,7 @@ namespace CHOJ.SdsDao
             if (p != null)
             {
                 p.Entity.Submit++;
-                if (answerType == AnswerType.Accepted)
+                if (answerType == AnswerType.Accepted && count == 1)
                     p.Entity.Accepted++;
                 c3.Update(p);
             }

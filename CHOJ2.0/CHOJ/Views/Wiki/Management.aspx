@@ -20,6 +20,7 @@
     
         <tr>
             <td>
+            <%= Html.ActionLink("Edit", "Edit", new { item.Id })%> |
                 <%= Html.ActionLink("Delete", "Delete", new { item.Id })%> |
                 <%= Html.ActionLink("Details", "Details", new { item.Title })%>
             </td>

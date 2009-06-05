@@ -17,12 +17,12 @@
             </p>
             <p>
                 <label for="Body">Body:</label>
-                <%= Html.TextArea("Body") %>
+                <%= Html.TextArea("Body", new { style="height:200px;width:400px;"})%>
                 <%= Html.ValidationMessage("Body", "*") %>
             </p>
             <p>
                 <label for="TimeLimit">TimeLimit:</label>
-                <%= Html.TextBox("TimeLimit") %>Seconds
+                <%= Html.TextBox("TimeLimit") %>ms
                 <%= Html.ValidationMessage("TimeLimit", "*") %>
             </p>
             <p>
@@ -37,7 +37,7 @@
             </p>
             <p>
                 <label for="Test">Test:</label>
-                <%= Html.TextArea("Test") %>
+                <%= Html.TextArea("Test", new { style = "height:200px;width:400px;" })%>
                 <%= Html.ValidationMessage("Test", "*") %>
             </p>
             <p>
