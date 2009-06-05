@@ -5,7 +5,7 @@
 		
 		<h3><%=Model.Title %></h3>
 		<div class="center">
-			<span class="limit">Time limit:</span><%=Model.TimeLimit%> Seconds			<span class="limit">Memory limit:</span><%=Model.MemoryLimit%> K 
+			<span class="limit">Time limit:</span><%=Model.TimeLimit%> ms			<span class="limit">Memory limit:</span><%=Model.MemoryLimit%> K 
 			<span class="limit">Total submit:</span><%=Model.SubmitCount%>&nbsp;&nbsp; 
 			<span class="limit">Accepted submit: </span><%=Model.AcceptedCount%>
 		</div>

@@ -15,11 +15,10 @@
 		<div>
 			<table class="GV" cellspacing="0" rules="all" border="1" style="border-collapse: collapse;">
 				<tr class="Login_td">
-					<th scope="col">ID</th>
-					<th scope="col">标题</th>
-					<th scope="col" style="width: 40px;">通过</th>
-					<th scope="col" style="width: 40px;">提交</th>
-					<th scope="col" style="width: 40px;">比例</th>
+					<th scope="col">Title</th>
+					<th scope="col" style="width: 40px;">Accepted</th>
+					<th scope="col" style="width: 40px;">Submit</th>
+					<th scope="col" style="width: 40px;">R</th>
 				</tr>
 				<%
 					bool line = false ;
@@ -27,7 +26,6 @@
 						line = !line;
 		   %>
 		   		<tr class="<%=line?"rb":"re" %>">
-					<td><%--<%=q.Id %>--%></td>
 					<td><%=Html.QuestionLink(q.Title,q.Id) %></td>
 					<td><%=q.AcceptedCount%></td>
 					<td><%=q.SubmitCount%></td>

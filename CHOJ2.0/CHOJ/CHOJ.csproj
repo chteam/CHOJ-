@@ -196,6 +196,7 @@
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Views\Wiki\Create.aspx" />
     <Content Include="Views\Wiki\Details.aspx" />
+    <Content Include="Views\Wiki\Edit.aspx" />
     <Content Include="Views\Wiki\Management.aspx" />
     <None Include="Web_Access.config" />
   </ItemGroup>

@@ -67,6 +67,9 @@
     <Compile Include="Registry.cs" />
     <Compile Include="SecurityCodeLoader.cs" />
     <Compile Include="StringExtension.cs" />
+    <Compile Include="WikiEngine\Formatter.cs" />
+    <Compile Include="WikiEngine\WikiEngine.cs" />
+    <Compile Include="WikiEngine\WikiFormatter.cs" />
     <Compile Include="XmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
