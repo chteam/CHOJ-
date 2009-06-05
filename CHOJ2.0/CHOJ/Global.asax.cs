@@ -9,6 +9,11 @@ namespace CHOJ {
 	public class MvcApplication : System.Web.HttpApplication {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+            "Wiki",
+            "Note/{Title}",
+            new { controller = "Wiki", action = "Details" }
+            );
 		    routes.MapRoute(
 		        "Api",
 		        "LiveId",

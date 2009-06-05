@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AzureDaoSession.cs" />
     <Compile Include="AzureDaoSessionHandler.cs" />
+    <Compile Include="IWikiDao.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="IAnswerDao.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="IProfileDao.cs" />
     <Compile Include="IQuestionDao.cs" />
     <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Wiki.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Question.cs" />
   </ItemGroup>

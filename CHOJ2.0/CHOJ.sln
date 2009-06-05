@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ", "CHOJ\CHOJ.csproj", "{A7131123-F0BE-4CA4-9D94-A77397DDA253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Tests", "CHOJ.Tests\CHOJ.Tests.csproj", "{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessProviders", "AccessProviders\AccessProviders.csproj", "{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Core", "CHOJ.Core\CHOJ.Core.csproj", "{AF5D2801-A8E7-4CDC-815F-4813672C186E}"
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CHOJCloud", "CHOJCloud\CHOJCloud.ccproj", "{959786E8-B15D-47E8-9071-5A5C77BBE59E}"
@@ -28,21 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 		DLL\System.Threading.dll = DLL\System.Threading.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.AccessDao", "CHOJ.AccessDao\CHOJ.AccessDao.csproj", "{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Data", "CHOJ.Data\CHOJ.Data.csproj", "{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Access", "Access", "{78D413F0-5007-491B-8D1A-F4AE04353ADF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageClientAPISample", "StorageClient\StorageClientAPISample\StorageClientAPISample.csproj", "{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TWitter", "TWitter", "{6C174504-22B1-4D13-B655-C604F532BB41}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitter", "LinqToTwitter\LinqToTwitter.csproj", "{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToTwitterTests", "LinqToTwitterTests\LinqToTwitterTests.csproj", "{2DC196D0-E574-4F11-A235-8987DC8FFB79}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sds", "Sds", "{3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}"
 EndProject
@@ -52,72 +34,40 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Samples.Cloud.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Cloud.Storage.PExtensions", "Microsoft.Cloud.Storage.PExtensions\Microsoft.Cloud.Storage.PExtensions.csproj", "{7D879C50-D736-4FA7-A4BB-8E95FD94042D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2FF31CA-5A57-4585-B5F6-630FA12DD391}"
-	ProjectSection(SolutionItems) = preProject
-		CustomDictionary.xml = CustomDictionary.xml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 16
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = AccessProviders\\AccessProviders.csproj
-		SccProjectTopLevelParentUniqueName1 = CHOJ.sln
-		SccProjectName1 = AccessProviders
-		SccLocalPath1 = AccessProviders
-		SccProjectUniqueName2 = CHOJ.Core\\CHOJ.Core.csproj
-		SccProjectName2 = CHOJ.Core
-		SccLocalPath2 = CHOJ.Core
-		SccProjectUniqueName3 = CHOJ.Tests\\CHOJ.Tests.csproj
-		SccProjectName3 = CHOJ.Tests
-		SccLocalPath3 = CHOJ.Tests
-		SccProjectUniqueName4 = CHOJ\\CHOJ.csproj
-		SccProjectName4 = CHOJ
-		SccLocalPath4 = CHOJ
-		SccProjectUniqueName5 = CHOJCloud\\CHOJCloud.ccproj
-		SccProjectTopLevelParentUniqueName5 = CHOJ.sln
-		SccProjectName5 = CHOJCloud
-		SccLocalPath5 = CHOJCloud
-		SccProjectUniqueName6 = CHOJ.Data\\CHOJ.Data.csproj
+		SccProjectUniqueName1 = CHOJ.Core\\CHOJ.Core.csproj
+		SccProjectName1 = CHOJ.Core
+		SccLocalPath1 = CHOJ.Core
+		SccProjectUniqueName2 = CHOJ\\CHOJ.csproj
+		SccProjectName2 = CHOJ
+		SccLocalPath2 = CHOJ
+		SccProjectUniqueName3 = CHOJCloud\\CHOJCloud.ccproj
+		SccProjectTopLevelParentUniqueName3 = CHOJ.sln
+		SccProjectName3 = CHOJCloud
+		SccLocalPath3 = CHOJCloud
+		SccProjectUniqueName4 = CHOJ.Service\\CHOJ.Service.csproj
+		SccProjectName4 = CHOJ.Service
+		SccLocalPath4 = CHOJ.Service
+		SccProjectUniqueName5 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
+		SccProjectName5 = CHOJ.Abstractions
+		SccLocalPath5 = CHOJ.Abstractions
+		SccProjectUniqueName6 = CHOJ.SdsDao\\CHOJ.SdsDao.csproj
 		SccProjectTopLevelParentUniqueName6 = CHOJ.sln
-		SccProjectName6 = CHOJ.Data
-		SccLocalPath6 = CHOJ.Data
-		SccProjectUniqueName7 = CHOJ.Service\\CHOJ.Service.csproj
-		SccProjectName7 = CHOJ.Service
-		SccLocalPath7 = CHOJ.Service
-		SccProjectUniqueName8 = CHOJ.Abstractions\\CHOJ.Abstractions.csproj
-		SccProjectName8 = CHOJ.Abstractions
-		SccLocalPath8 = CHOJ.Abstractions
-		SccProjectUniqueName9 = CHOJ.AccessDao\\CHOJ.AccessDao.csproj
-		SccProjectTopLevelParentUniqueName9 = CHOJ.sln
-		SccProjectName9 = CHOJ.AccessDao
-		SccLocalPath9 = CHOJ.AccessDao
-		SccProjectUniqueName10 = StorageClient\\StorageClientAPISample\\StorageClientAPISample.csproj
-		SccProjectTopLevelParentUniqueName10 = CHOJ.sln
-		SccProjectName10 = StorageClient/StorageClientAPISample
-		SccLocalPath10 = StorageClient\\StorageClientAPISample
-		SccProjectUniqueName11 = LinqToTwitter\\LinqToTwitter.csproj
-		SccProjectTopLevelParentUniqueName11 = CHOJ.sln
-		SccProjectName11 = LinqToTwitter
-		SccLocalPath11 = LinqToTwitter
-		SccProjectUniqueName12 = LinqToTwitterTests\\LinqToTwitterTests.csproj
-		SccProjectTopLevelParentUniqueName12 = CHOJ.sln
-		SccProjectName12 = LinqToTwitterTests
-		SccLocalPath12 = LinqToTwitterTests
-		SccProjectUniqueName13 = CHOJ.SdsDao\\CHOJ.SdsDao.csproj
-		SccProjectTopLevelParentUniqueName13 = CHOJ.sln
-		SccProjectName13 = CHOJ.SdsDao
-		SccLocalPath13 = CHOJ.SdsDao
-		SccProjectUniqueName14 = Microsoft.Samples.Cloud.Data\\Microsoft.Samples.Cloud.Data.csproj
-		SccProjectTopLevelParentUniqueName14 = CHOJ.sln
-		SccProjectName14 = Microsoft.Samples.Cloud.Data
-		SccLocalPath14 = Microsoft.Samples.Cloud.Data
-		SccProjectUniqueName15 = Microsoft.Cloud.Storage.PExtensions\\Microsoft.Cloud.Storage.PExtensions.csproj
-		SccProjectTopLevelParentUniqueName15 = CHOJ.sln
-		SccProjectName15 = Microsoft.Cloud.Storage.PExtensions
-		SccLocalPath15 = Microsoft.Cloud.Storage.PExtensions
+		SccProjectName6 = CHOJ.SdsDao
+		SccLocalPath6 = CHOJ.SdsDao
+		SccProjectUniqueName7 = Microsoft.Samples.Cloud.Data\\Microsoft.Samples.Cloud.Data.csproj
+		SccProjectTopLevelParentUniqueName7 = CHOJ.sln
+		SccProjectName7 = Microsoft.Samples.Cloud.Data
+		SccLocalPath7 = Microsoft.Samples.Cloud.Data
+		SccProjectUniqueName8 = Microsoft.Cloud.Storage.PExtensions\\Microsoft.Cloud.Storage.PExtensions.csproj
+		SccProjectTopLevelParentUniqueName8 = CHOJ.sln
+		SccProjectName8 = Microsoft.Cloud.Storage.PExtensions
+		SccLocalPath8 = Microsoft.Cloud.Storage.PExtensions
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,14 +78,6 @@ Global
 		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7131123-F0BE-4CA4-9D94-A77397DDA253}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AC52878-EDA4-4B02-8C6B-F7CBC9B3E040}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5D2801-A8E7-4CDC-815F-4813672C186E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -152,26 +94,6 @@ Global
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DC196D0-E574-4F11-A235-8987DC8FFB79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -189,13 +111,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C8DD7CEE-F66D-4923-AC24-3F3BF0E534AB} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
-		{A1E9178C-A1E9-4562-83AD-3472CE3CE1AF} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
-		{F92F6A46-ACB8-4DDE-9A1B-82CF458ECC34} = {78D413F0-5007-491B-8D1A-F4AE04353ADF}
 		{959786E8-B15D-47E8-9071-5A5C77BBE59E} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
-		{191AAF70-B4E8-46C8-A02C-842EABCCB8F1} = {345EAFFE-95EB-4BE3-B627-A9F5D19DC00F}
-		{A214B9F0-6B8C-4E91-BE99-27F55CC860C1} = {6C174504-22B1-4D13-B655-C604F532BB41}
-		{2DC196D0-E574-4F11-A235-8987DC8FFB79} = {6C174504-22B1-4D13-B655-C604F532BB41}
 		{60FC9959-4502-4D1A-9FCE-8B863B6D45AD} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
 		{2AB9EE5C-BE1A-4546-8380-683FED8A80CF} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}
 		{7D879C50-D736-4FA7-A4BB-8E95FD94042D} = {3B6220AE-1290-4C32-B5EE-8FC8DC4B58FA}

@@ -88,6 +88,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\WikiController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,6 +194,9 @@
     <Content Include="Views\Question\Create.aspx" />
     <Content Include="Views\Question\Management.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
+    <Content Include="Views\Wiki\Create.aspx" />
+    <Content Include="Views\Wiki\Details.aspx" />
+    <Content Include="Views\Wiki\Management.aspx" />
     <None Include="Web_Access.config" />
   </ItemGroup>
   <ItemGroup>
