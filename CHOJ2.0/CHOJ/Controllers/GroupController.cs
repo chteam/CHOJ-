@@ -12,14 +12,15 @@ namespace CHOJ.Controllers {
         [LoginedFilter(Role="Admin")]
         public ActionResult Management()
         {
+            Title = "Category Management";
             var model = GroupService.GetInstance().GroupList();
-
             return View(model);
         }
         [LoginedFilter(Role = "Admin")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Group group)
         {
+            Title = "Create a Category";
             GroupService.GetInstance().Add(group);
             return RedirectToAction("Management");
         }

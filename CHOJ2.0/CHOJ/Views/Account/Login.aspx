@@ -1,8 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Login</h2>
-    <p>
+    <h2>
+        Login</h2>
+    <div>
+        <a href="<%=ViewData["LiveLogin"]  %>">LogOn or Register with Windows Live Account</a>
+    </div>
+<%--    <p>
         Please enter your username and password below. If you don't have an account,
         please <%= Html.ActionLink("register", "Register") %>.
     </p>
@@ -13,15 +17,11 @@
                 <ul class="error">
                 <% foreach (string error in errors) { %>
                     <li><%= Html.Encode(error) %></li>
-                <% } %>
+                <% } %> 
                 </ul>
             <%
         }
-         %>
-    <div>
-    <a href="http://login.live.com/wlogin.srf?appid=000000004C015530&alg=wsignin1.0">LogOn with Windows Live Account</a>
-    </div>
-    <form method="post" action="<%= Html.AttributeEncode(Url.Action("Login")) %>">
+         %><form method="post" action="<%= Html.AttributeEncode(Url.Action("Login")) %>">
         <div>
             <table>
                 <tr>
@@ -43,5 +43,5 @@
             </table>
         </div>
         <%=Html.Hidden("ReturnUrl")%>
-    </form>
+    </form>--%>
 </asp:Content>

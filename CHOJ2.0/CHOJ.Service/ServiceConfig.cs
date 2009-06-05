@@ -1,4 +1,5 @@
 using System;
+using CHOJ.Abstractions;
 using IBatisNet.Common.Utilities;
 using IBatisNet.DataAccess;
 using IBatisNet.DataAccess.Configuration;
@@ -25,11 +26,12 @@ namespace CHOJ.Service
                     if (_instance == null)
                     {
                         var handler = new ConfigureHandler(Reset);
+                       
                         try
                         {
                             var builder = new DomDaoManagerBuilder();
                             builder.ConfigureAndWatch("dao.config", handler); 
-                     
+
                              //IBatisNet.DataAccess.DaoManager.ConfigureAndWatch(handler);
           //                  var builder = new DomDaoManagerBuilder();
             //                builder.ConfigureAndWatch(handler);
@@ -46,6 +48,7 @@ namespace CHOJ.Service
                                             DaoManager = IBatisNet.DataAccess.DaoManager.GetInstance("SqlMapDao")
                                             
                                         };
+                       
                     //_instance.DaoManager.SessionStore = new HybridWebThreadSessionStore(_instance.DaoManager.Id);
                     }
                 }

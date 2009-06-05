@@ -10,6 +10,7 @@ namespace CHOJ.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
+
             var model = ProfileService.GetInstance().Get() ?? new Profile();
             SetTitle(model);
             return View(model);

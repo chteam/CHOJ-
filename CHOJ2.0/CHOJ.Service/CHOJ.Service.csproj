@@ -83,6 +83,10 @@
       <Project>{2EF1680B-104B-4CF7-A379-63CA9BB0AF07}</Project>
       <Name>CHOJ.Abstractions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CHOJ.Core\CHOJ.Core.csproj">
+      <Project>{AF5D2801-A8E7-4CDC-815F-4813672C186E}</Project>
+      <Name>CHOJ.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

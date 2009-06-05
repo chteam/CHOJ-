@@ -23,6 +23,7 @@ namespace CHOJ.Controllers {
         [LoginedFilter(Role="Admin")]
         public ActionResult Management(string groupId)
         {
+            Title = "Question category";
             ViewData["GroupList"] = GroupService.GetInstance().GroupList();
             var model = QuestionService.GetInstance().All();
             if (!groupId.IsNullOrEmpty())
@@ -49,6 +50,7 @@ namespace CHOJ.Controllers {
         {
             QuestionService.GetInstance().Create(question);
            // GetGroupList(question.GroupId);
+            Title = "Create a question.";
             return RedirectToAction("Management");
         }
 

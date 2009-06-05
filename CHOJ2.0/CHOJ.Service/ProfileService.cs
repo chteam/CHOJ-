@@ -1,3 +1,4 @@
+using System;
 using CHOJ.Abstractions;
 using CHOJ.Models;
 using IBatisNet.DataAccess;
@@ -49,7 +50,12 @@ namespace CHOJ.Service
 
         public IEnumerable<Profile> RankList(int n)
         {
-            return ProfileDao.RankList(n);
+            string key = "ranklist";
+            if(!CHCache.Contains(key))
+            {
+                CHCache.Add(key, ProfileDao.RankList(n), TimeSpan.FromMinutes(3));
+            }
+            return CHCache.Get<IEnumerable<Profile>>(key);
         }
     }
 }

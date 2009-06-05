@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
+using CHOJ.OpenId;
 
 namespace CHOJ.Controllers {
 
 	[HandleError]
 	[OutputCache(Location = OutputCacheLocation.None)]
 	public class AccountController : BaseController {
-
+        static readonly WindowsLiveLogin Wll = new WindowsLiveLogin(true);
 		public AccountController()
 			: this(null, null) {
 		}
@@ -92,8 +93,9 @@ namespace CHOJ.Controllers {
 		}
 
 		public ActionResult Login(string username, string password, bool? rememberMe, string ReturnUrl) {
-			
-			ViewData["Title"] = "Login";
+
+            ViewData["LiveLogin"] = Wll.GetLoginUrl();
+			Title = "Login";
 			
 			// Non-POST requests should just display the Login form 
 			if (Request.HttpMethod != "POST") {
@@ -126,7 +128,8 @@ namespace CHOJ.Controllers {
 
 			// If we got this far, something failed, redisplay form
 			ViewData["errors"] = errors;
-			ViewData["username"] = username;			
+			ViewData["username"] = username;
+
 			return View();
 		}
 

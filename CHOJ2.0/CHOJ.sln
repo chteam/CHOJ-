@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{A6B1BB04-E6B
 		DLL\IBatisNet.DataMapper.dll = DLL\IBatisNet.DataMapper.dll
 		DLL\log4net.dll = DLL\log4net.dll
 		DLL\Microsoft.SqlServices.Data.SDK.Common.dll = DLL\Microsoft.SqlServices.Data.SDK.Common.dll
+		DLL\StorageClient.dll = DLL\StorageClient.dll
 		DLL\System.Threading.dll = DLL\System.Threading.dll
 	EndProjectSection
 EndProject

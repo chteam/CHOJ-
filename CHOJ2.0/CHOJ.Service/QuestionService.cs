@@ -32,9 +32,15 @@ namespace CHOJ.Service
             return _instance;
         }
 
+        private string ALLQUESTIONSTRING = "CHOJ_ALLQUESTION";
+
         public IEnumerable<Question> All()
         {
-            return QuestionDao.AllQuestion();
+            if (!CHCache.Contains(ALLQUESTIONSTRING))
+            {
+                CHCache.Add(ALLQUESTIONSTRING, QuestionDao.AllQuestion(), TimeSpan.FromMinutes(3));
+            }
+            return CHCache.Get<IEnumerable<Question>>(ALLQUESTIONSTRING);
         }
         public void Create(Question question)
         {
@@ -42,10 +48,16 @@ namespace CHOJ.Service
             question.AddTime = DateTime.Now;
             
             QuestionDao.Add(question);
+            CHCache.Remove(ALLQUESTIONSTRING);
         }
         public void Delete(string id)
         {
             QuestionDao.Delete(id);
+            CHCache.Remove(ALLQUESTIONSTRING);
+        }
+        public void RemoveCache()
+        {
+            CHCache.Remove(ALLQUESTIONSTRING);
         }
     }
 }
