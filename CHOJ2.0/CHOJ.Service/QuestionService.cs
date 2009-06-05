@@ -48,16 +48,22 @@ namespace CHOJ.Service
             question.AddTime = DateTime.Now;
             
             QuestionDao.Add(question);
-            CHCache.Remove(ALLQUESTIONSTRING);
+            RemoveCache();
         }
         public void Delete(string id)
         {
             QuestionDao.Delete(id);
-            CHCache.Remove(ALLQUESTIONSTRING);
+            RemoveCache();
         }
         public void RemoveCache()
         {
             CHCache.Remove(ALLQUESTIONSTRING);
+        }
+        public void Update(Question question,string id)
+        {
+            question.Id = id;
+            QuestionDao.Update(question);
+            RemoveCache();
         }
     }
 }
