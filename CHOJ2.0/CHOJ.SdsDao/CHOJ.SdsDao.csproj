@@ -59,6 +59,7 @@
     <Compile Include="ProfileDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionDao.cs" />
+    <Compile Include="WikiDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHOJ.Abstractions\CHOJ.Abstractions.csproj">
