@@ -45,7 +45,9 @@ namespace CHOJ.Service
 
                         _instance = new ServiceConfig
                                         {
-                                            DaoManager = IBatisNet.DataAccess.DaoManager.GetInstance("SqlMapDao")
+                                            DaoManager =
+                                            IBatisNet.DataAccess.
+                                            DaoManager.GetInstance("AzureTable")//"SqlMapDao")
                                             
                                         };
                        
