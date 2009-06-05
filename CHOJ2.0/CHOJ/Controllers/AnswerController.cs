@@ -11,6 +11,7 @@ namespace CHOJ.Controllers {
 	public class AnswerController : BaseController {
 		[LoginedFilter]
 		public ActionResult Submit(string id) {
+		    Title = "Submit your code";
 			var li = ConfigSerializer.Load<List<Compiler>>("Compiler");
 			ViewData["Compiler"] = new SelectList(li, "Guid", "Name");
 			if (!id.IsNullOrEmpty())
@@ -21,6 +22,10 @@ namespace CHOJ.Controllers {
         [ValidateInput(false)]
 		public ActionResult SubmitProcess(string code, Guid compiler
             , string questionId) {
+            if(HalfoxUser.Id.IsNullOrEmpty())
+            {
+                throw new Exception("");
+            }
             var x = new OJer(HalfoxUser.Id, HalfoxUser.Name, 
                 code, compiler, questionId, 
                 Server.MapPath("/"));
@@ -29,6 +34,7 @@ namespace CHOJ.Controllers {
 		}
         public ActionResult Status(int? p)
         {
+            Title = "All Status";
             InitIntPage(ref p);
             var model = AnswerService.GetInstance().Status(p.Value, 20);
             return View(model);

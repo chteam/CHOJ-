@@ -44,7 +44,7 @@ namespace CHOJ {
             Question = QuestionService.GetInstance().All().FirstOrDefault(c => c.Id == questionId);
             RootPath = siteRoot;
             AnswerType = AnswerType.Queuing;
-            ExeFile = RootPath + string.Format(@"temp\{0}.exe", guid);
+            ExeFile = RootPath + string.Format(@"compilerTemp\{0}.exe", guid);
         }
 
 	    #endregion
@@ -80,20 +80,21 @@ namespace CHOJ {
 		                                          UseMemory,
 		                                          Guid.ToString(),
 		                                          Code);
-           if(!Directory.Exists(RootPath + @"SourceCode\"))
-           {
-               Directory.CreateDirectory(RootPath + @"SourceCode\");
-           }
-		    File.WriteAllText(RootPath + string.Format(@"SourceCode\{0}.sc", Guid)
-				, Code);
+           //if(!Directory.Exists(RootPath + @"SourceCode\"))
+           //{
+           //    Directory.CreateDirectory(RootPath + @"SourceCode");
+           //}
+           // File.WriteAllText(RootPath + string.Format(@"SourceCode\{0}.sc", Guid)
+           //     , Code);
 			if (AnswerType == AnswerType.CompileError) {
                 if (!Directory.Exists(RootPath + @"CompilerInfo\")) {
-                    Directory.CreateDirectory(RootPath + @"CompilerInfo\");
+                    Directory.CreateDirectory(RootPath + @"CompilerInfo");
                 }
 				File.WriteAllText(RootPath + string.Format(@"CompilerInfo\{0}.txt", Guid), Log.ToString());
 			}
-            if (!Directory.Exists(RootPath + @"temp\")) {
-                Directory.CreateDirectory(RootPath + @"temp\");
+            if (!Directory.Exists(RootPath + @"compilerTemp\"))
+            {
+                Directory.CreateDirectory(RootPath + @"compilerTemp");
             }
 			File.Delete(ExeFile);
 		}

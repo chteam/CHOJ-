@@ -19,6 +19,7 @@ namespace CHOJ.Controllers
 
         public ActionResult LiveId(string action, string stoken)
         {
+            
             var user = Wll.ProcessLogin(Request.Form);
             if (user != null)
             {
@@ -32,8 +33,6 @@ namespace CHOJ.Controllers
                     HalfoxUser.Role = currentProfile.Role;
                     HalfoxUser.Id = currentProfile.Id;
                 }
-
-
                 if (user.UsePersistentCookie)
                 {
                     HalfoxUser.Expires = PersistCookie;

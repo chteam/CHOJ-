@@ -22,7 +22,15 @@
                     {
 				%>Welcome <b>
 					<%=Html.ActionLink(HalfoxUser.Name.IsNullOrEmpty() ? "Please complete your profile." : HalfoxUser.Name, "Index", "Profile")%>
-					!</b> [
+					!</b> 
+					<%if(!HalfoxUser.Id.IsNullOrEmpty())
+{
+    Writer.Write(
+        Html.ActionLink("My Status", "UserStatus", "Answer", new { uId=HalfoxUser.Id,userName=HalfoxUser.Name},null)
+        );
+}%>
+					
+					[
 					<% if (HalfoxUser.Role=="Admin")
         {%>
 					<%=Html.ActionLink("Management", "Index", "Admin")%>,

@@ -10,7 +10,7 @@ namespace CHOJ.Controllers {
 
 	public class HomeController : BaseController {
 		public ActionResult Index() {
-		    Title = "CHOJ#";
+		    Title = "CHOJ# Home";
 			return View();
 		}
 
