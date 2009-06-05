@@ -36,7 +36,9 @@ namespace CHOJ.Controllers {
         {
             Title = "All Status";
             InitIntPage(ref p);
-            var model = AnswerService.GetInstance().Status(p.Value, 20);
+            var x = AnswerList.Answers.Select(c=>c.Value);
+
+            var model = x.Union(AnswerService.GetInstance().Status(p.Value, 50));
             return View(model);
         }
 
@@ -44,14 +46,18 @@ namespace CHOJ.Controllers {
         {
             InitIntPage(ref p);
             Title = userName + "'s status";
-            var model = AnswerService.GetInstance().UserStatus(uId, p.Value, 20);
+            var x = AnswerList.Answers.Select(c => c.Value).Where(c => c.UserId == uId);
+
+            var model =  x.Union(AnswerService.GetInstance().UserStatus(uId, p.Value, 50));
             return View("Status", model);
 		}
         public ActionResult QuestionStatus(string qId,string title, int? p)
         {
             InitIntPage(ref p);
             Title = title + "'s status";
-            var model = AnswerService.GetInstance().QuestionStatus(qId, p.Value, 20);
+            var x = AnswerList.Answers.Select(c => c.Value).Where(c => c.QuestionId == qId);
+
+            var model =  x.Union(AnswerService.GetInstance().QuestionStatus(qId, p.Value, 50));
             return View("Status", model);
         }
 	}

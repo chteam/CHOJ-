@@ -21,8 +21,18 @@ namespace CHOJ {
 		public Guid Guid { get; set; }
 		public string  RootPath { get; set; }
 		public string ExeFile { get; set; }
-		public AnswerType AnswerType { get; set; }
-		StringBuilder _log;
+	    private AnswerType _answerType;
+	    public AnswerType AnswerType
+	    {
+	        get { return _answerType; }
+	        set
+	        {
+	            _answerType = value;
+                AnswerList.Answers[Guid.ToString()].Status = (int)value;
+	        }
+	    }
+
+	    StringBuilder _log;
 		public StringBuilder Log {
 			get {
 				if (_log == null) {
@@ -43,11 +53,28 @@ namespace CHOJ {
             Compiler = ConfigSerializer.Load<List<Compiler>>("Compiler").Where(c => c.Guid == guid).FirstOrDefault();
             Question = QuestionService.GetInstance().All().FirstOrDefault(c => c.Id == questionId);
             RootPath = siteRoot;
-            AnswerType = AnswerType.Queuing;
+           
             ExeFile = RootPath + string.Format(@"compilerTemp\{0}.exe", guid);
+
+            AnswerList.Answers.Add(Guid.ToString(), new Answer
+                                                        {
+                                                            QuestionId = questionId,
+                                                            UserId = userId,
+                                                            UserName = userName,
+                                                            Status = (int)AnswerType.Queuing,
+                                                            Complier = Compiler.Name,
+                                                            UseTime = 0,
+                                                            UseMemory = 0,
+                                                            AddTime = DateTime.Now,
+                                                            Id = Guid.ToString(),
+                                                            QuestionTitle = Question.Title,
+                                                        });
+            AnswerType = AnswerType.Queuing;
         }
 
 	    #endregion
+
+
 
 		public void Start(Object stateInfo) {
 			//检查
@@ -55,6 +82,7 @@ namespace CHOJ {
 		    {
 		        //编译
 		        AnswerType = AnswerType.Compiling;
+		        
 		        if (CompileExecutable())
 		        {
 		            //编译完成
@@ -80,12 +108,8 @@ namespace CHOJ {
 		                                          UseMemory,
 		                                          Guid.ToString(),
 		                                          Code);
-           //if(!Directory.Exists(RootPath + @"SourceCode\"))
-           //{
-           //    Directory.CreateDirectory(RootPath + @"SourceCode");
-           //}
-           // File.WriteAllText(RootPath + string.Format(@"SourceCode\{0}.sc", Guid)
-           //     , Code);
+		    AnswerList.Answers.Remove(Guid.ToString());
+
 			if (AnswerType == AnswerType.CompileError) {
                 if (!Directory.Exists(RootPath + @"CompilerInfo\")) {
                     Directory.CreateDirectory(RootPath + @"CompilerInfo");

@@ -11,7 +11,10 @@ namespace CHOJ.SdsDao
         public IEnumerable<Question> AllQuestion()
         {
             SsdsContainer c1 = DbContext.OpenContainer("Question");
-            return c1.Query<Question>(c => true).Select(c => c.Entity);
+            return c1
+                .Query<Question>(c => true)
+                .Select(c => c.Entity)
+                .OrderBy(c=>c.AddTime);
         }
 
         public void Add(Question question)
@@ -28,7 +31,17 @@ namespace CHOJ.SdsDao
 
         public void Update(Question question)
         {
-            throw new NotImplementedException();
+            SsdsContainer c1 = DbContext.OpenContainer("Question");
+            var q=c1.Single<Question>(c => c.Id == question.Id).Entity;
+
+            q.Title = question.Title;
+            q.Body = question.Body;
+            q.MemoryLimit = question.MemoryLimit;
+            q.TimeLimit = question.TimeLimit;
+            q.Test = question.Test;
+            q.GroupId = question.GroupId;
+            c1.Update<Question>(q, question.Id, ConcurrencyPattern.Always);
+
         }
 
         public void Delete(string id)

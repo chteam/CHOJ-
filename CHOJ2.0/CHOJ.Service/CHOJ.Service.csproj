@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerList.cs" />
     <Compile Include="AnswerService.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="HalfoxUser.cs" />

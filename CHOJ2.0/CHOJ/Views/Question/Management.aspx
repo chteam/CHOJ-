@@ -32,9 +32,6 @@
                 SubmitCount
             </th>
             <th>
-                UserId
-            </th>
-            <th>
                 AddTime
             </th>
             <th>
@@ -47,6 +44,7 @@
     
         <tr>
             <td>
+             <%= Html.ActionLink("Edit", "Edit", new { item.Id }) %> |
                 <%= Html.ActionLink("Delete", "Delete", new { item.Id }) %>
             </td>
             <td>
@@ -64,9 +62,6 @@
             </td>
             <td>
                 <%= Html.Encode(item.SubmitCount) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.UserId) %>
             </td>
             <td>
                 <%= Html.Encode(String.Format("{0:g}", item.AddTime)) %>
