@@ -11,6 +11,8 @@
 			<%=Html.ActionLink("Status", "Status", "Answer")%></dd>
 			<dd>
 			<%=Html.ActionLink("Rank List", "RankList", "Profile")%></dd>
+			
+			<dd><%= Html.ActionLink("Help", "Details", "Wiki", new { title="index"},null)%></dd>
 			<dd>
 				Suggest IDE/Compiler<br />
 				<a href="http://www.microsoft.com/china/msdn/express/vc.aspx" title="Visual C++ Express Edition">

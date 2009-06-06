@@ -270,12 +270,14 @@ namespace CHOJ {
 			             {
 			                 GenerateInMemory = true,
 			                 GenerateExecutable = true
+                             
 			             };
 
 		    // Generate an executable rather than a DLL file.
 		    //cp.CompilerOptions = "/debug:pdbonly";
 			//cp.MainClass = "Class1";
 			// Invoke compilation.
+
             return provider.CompileAssemblyFromSource(cp, SecurityCodeLoader.GetSecurityCode(RootPath,Compiler.Language) + Code);
 		}
 
@@ -284,6 +286,7 @@ namespace CHOJ {
 		/// </summary>
 		/// <returns></returns>
 		CodeDomProvider GetCurrentProvider() {
+            
 			return CodeDomProvider.CreateProvider(Compiler.Language);
 		}
 		#endregion

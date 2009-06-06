@@ -47,6 +47,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\IBatisNet.DataMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Cloud.Storage.PExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Cloud.Storage.PExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Samples.Cloud.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Samples.Cloud.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -77,14 +85,6 @@
     <ProjectReference Include="..\CHOJ.Core\CHOJ.Core.csproj">
       <Project>{AF5D2801-A8E7-4CDC-815F-4813672C186E}</Project>
       <Name>CHOJ.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.Cloud.Storage.PExtensions\Microsoft.Cloud.Storage.PExtensions.csproj">
-      <Project>{7D879C50-D736-4FA7-A4BB-8E95FD94042D}</Project>
-      <Name>Microsoft.Cloud.Storage.PExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.Samples.Cloud.Data\Microsoft.Samples.Cloud.Data.csproj">
-      <Project>{2AB9EE5C-BE1A-4546-8380-683FED8A80CF}</Project>
-      <Name>Microsoft.Samples.Cloud.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
