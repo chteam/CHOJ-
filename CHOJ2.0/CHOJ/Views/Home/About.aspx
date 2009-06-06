@@ -10,4 +10,17 @@
         <li><a href="http://www.cnblogs.com/chsword">Blog</a></li>
         <li><a href="http://oj.eice.com.cn">Demo online</a></li>
     </ul>
+    
+    <%
+        foreach(var c in System.CodeDom.Compiler.CodeDomProvider.GetAllCompilerInfo())
+        {
+            Writer.Write("Language<br>");
+            foreach (var l in c.GetLanguages())
+                Writer.Write(l + "<br>");
+            
+            Writer.Write("Extensions<br>");
+            foreach (var l in c.GetExtensions())
+                Writer.Write(l + "<br>");
+        }
+%>
 </asp:Content>

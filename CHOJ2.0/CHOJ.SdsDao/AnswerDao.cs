@@ -17,8 +17,9 @@ namespace CHOJ.SdsDao
             var count = c1.Query<Answer>(
                 c => c.Entity.QuestionId == answer.QuestionId &&
                      c.Entity.Status == (int) AnswerType.Accepted
+                     && c.Entity.UserId == answer.UserId
                      && c.Id != answer.Id
-                     ).Count();
+                ).Count();
             //question
             var answerType = (AnswerType) answer.Status;
             var c2 = DbContext.OpenContainer("Question");
