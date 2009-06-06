@@ -31,7 +31,7 @@
 			<string>System\s*\.\s*Web</string>
 		</DangerCode>
 	</Compiler>
-	 <Compiler>
+<Compiler>
     <Guid>553E5687-5386-4f88-AA50-1ECE18A23035</Guid>
     <Name>VisualJSharp</Name>
     <Level>10</Level>
@@ -47,7 +47,7 @@
       <string>System\s*\.\s*Web</string>
     </DangerCode>
   </Compiler>
-	<!-- <Compiler>
+		<!--  <Compiler>
 		<Guid>04F09170-B700-4ab9-811D-3F3FD9249B11</Guid>
 		<Name>JScript</Name>
 		<Level>10</Level>
