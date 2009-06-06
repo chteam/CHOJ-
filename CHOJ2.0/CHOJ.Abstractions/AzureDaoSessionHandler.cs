@@ -21,7 +21,7 @@ namespace CHOJ.Abstractions
 
         public DaoSession GetDaoSession(DaoManager daoManager)
         {
-            return new AzureDaoSession(daoManager);
+            return new AzureDaoSession(daoManager, this._dataSource);
         }
     }
 

@@ -24,7 +24,7 @@ namespace CHOJ.Controllers {
             , string questionId) {
             if(HalfoxUser.Id.IsNullOrEmpty())
             {
-                throw new Exception("");
+                    return RedirectToAction("Index", "Profile");
             }
             var x = new OJer(HalfoxUser.Id, HalfoxUser.Name, 
                 code, compiler, questionId, 
