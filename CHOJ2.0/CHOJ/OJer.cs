@@ -251,6 +251,7 @@ namespace CHOJ {
 			
 			var provider = GetCurrentProvider();
 			var cr = CompileCode(provider);
+            
 			if (cr.Errors.Count > 0) {
 				foreach (CompilerError ce in cr.Errors)
 					Log.AppendLine(ce.ErrorText);
@@ -270,7 +271,6 @@ namespace CHOJ {
 			             {
 			                 GenerateInMemory = true,
 			                 GenerateExecutable = true
-                             
 			             };
 
 		    // Generate an executable rather than a DLL file.
