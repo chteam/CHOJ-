@@ -47,8 +47,7 @@ namespace CHOJ.Service
                                         {
                                             DaoManager =
                                             IBatisNet.DataAccess.
-                                            DaoManager.GetInstance("SqlMapDao")
-                                            
+                                            DaoManager.GetInstance("Ssds")    
                                         };
                        
                     //_instance.DaoManager.SessionStore = new HybridWebThreadSessionStore(_instance.DaoManager.Id);
