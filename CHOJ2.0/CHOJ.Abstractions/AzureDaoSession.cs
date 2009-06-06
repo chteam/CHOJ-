@@ -8,8 +8,10 @@ namespace CHOJ.Abstractions
     public class AzureDaoSession : DaoSession
 
     {
-        public AzureDaoSession(DaoManager daoManager) : base(daoManager)
+        public AzureDaoSession(DaoManager daoManager, IDataSource dataSource)
+            : base(daoManager)
         {
+            _dataSource = dataSource;
         }
 
         public override void Complete()
@@ -97,10 +99,10 @@ namespace CHOJ.Abstractions
             throw new NotImplementedException();
         }
 
-        public override IDataSource DataSource { get
+        private IDataSource _dataSource;
+        public override IDataSource DataSource
         {
-            throw new NotImplementedException();
-        }
+            get { return _dataSource; }
         }
         public override IDbConnection Connection
         {

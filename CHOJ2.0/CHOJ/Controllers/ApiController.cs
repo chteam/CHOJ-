@@ -14,7 +14,7 @@ namespace CHOJ.Controllers
         public ActionResult Logout()
         {
             HalfoxUser.Clear();
-            return RedirectToAction("Index", "home");
+            return Redirect(Wll.GetLogoutUrl());
         }
 
         public ActionResult LiveId(string action, string stoken)
