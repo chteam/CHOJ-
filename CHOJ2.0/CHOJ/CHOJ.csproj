@@ -191,6 +191,7 @@
     <Content Include="App_Data\ASPNetDB.mdb">
     </Content>
     <Content Include="Content\jquery.js" />
+    <Content Include="ReadMe.txt" />
     <Content Include="Views\Group\Management.aspx" />
     <Content Include="Views\Profile\RankList.aspx" />
     <Content Include="Views\Question\Create.aspx" />
