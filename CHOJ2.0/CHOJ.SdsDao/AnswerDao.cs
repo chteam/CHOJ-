@@ -16,7 +16,9 @@ namespace CHOJ.SdsDao
 
             var count = c1.Query<Answer>(
                 c => c.Entity.QuestionId == answer.QuestionId &&
-                     c.Entity.Status == (int) AnswerType.Accepted).Count();
+                     c.Entity.Status == (int) AnswerType.Accepted
+                     && c.Id != answer.Id
+                     ).Count();
             //question
             var answerType = (AnswerType) answer.Status;
             var c2 = DbContext.OpenContainer("Question");
@@ -26,7 +28,7 @@ namespace CHOJ.SdsDao
             if (q != null)
             {
                 q.Entity.SubmitCount++;
-                if (answerType == AnswerType.Accepted && count == 1)
+                if (answerType == AnswerType.Accepted && count == 0)
                     q.Entity.AcceptedCount++;
                 c2.Update(q);
             }
@@ -37,7 +39,7 @@ namespace CHOJ.SdsDao
             if (p != null)
             {
                 p.Entity.Submit++;
-                if (answerType == AnswerType.Accepted && count == 1)
+                if (answerType == AnswerType.Accepted && count == 0)
                     p.Entity.Accepted++;
                 c3.Update(p);
             }
