@@ -103,31 +103,11 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Image\asual-bg.jpg" />
-    <Content Include="Image\asual-bodycenter.jpg" />
-    <Content Include="Image\asual-bodyleft.jpg" />
-    <Content Include="Image\asual-bodyright.jpg" />
-    <Content Include="Image\asual-content.jpg" />
-    <Content Include="Image\asual-footcenter.jpg" />
-    <Content Include="Image\asual-footleft.jpg" />
-    <Content Include="Image\asual-footright.jpg" />
-    <Content Include="Image\asual-headcenter.jpg" />
-    <Content Include="Image\asual-headleft.jpg" />
-    <Content Include="Image\asual-headright.jpg" />
-    <Content Include="Image\panel-bottom.png" />
-    <Content Include="Image\panel-content.png" />
-    <Content Include="Image\panel-title.png" />
-    <Content Include="Image\Photo\1002.gif" />
     <Content Include="Views\Answer\Status.aspx" />
     <Content Include="Views\Answer\Submit.aspx" />
     <Content Include="Views\Profile\Index.aspx" />
     <Content Include="Views\Question\List.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\MicrosoftAjax.js" />
-    <Content Include="Content\MicrosoftAjax.debug.js" />
-    <Content Include="Content\MicrosoftMvcAjax.js" />
-    <Content Include="Content\MicrosoftMvcAjax.debug.js" />
     <Content Include="Views\Account\ChangePassword.aspx" />
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\Login.aspx" />
@@ -154,6 +134,10 @@
     <ProjectReference Include="..\CHOJ.Service\CHOJ.Service.csproj">
       <Project>{3F7D98AA-A4C0-4BCC-9671-0DD15782DA01}</Project>
       <Name>CHOJ.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VJSharpCodeProvider\VJSCodeProvider.csproj">
+      <Project>{EF7A8C41-FC94-4EE7-A35B-36CEE08C8B3B}</Project>
+      <Name>VJSCodeProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\VJSharp.txt" />
-    <Content Include="Content\jquery.js" />
     <Content Include="ReadMe.txt" />
     <Content Include="Views\Group\Management.aspx" />
     <Content Include="Views\Profile\RankList.aspx" />
