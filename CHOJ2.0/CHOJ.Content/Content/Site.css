@@ -8,7 +8,7 @@ body
     background-color: #5c87b2;
     font-family: Verdana, Helvetica, Sans-Serif;
     color: #696969;
-	background: #FAFCFD url(../Image/asual-bg.jpg) repeat-x;}
+	background: #FAFCFD url(../image/asual-bg.jpg) repeat-x;}
 body, div, p, img, ul, li, h1, h2, h3, h4, h5, h6, form {
 	margin: 0;
 	padding: 0;
@@ -405,52 +405,52 @@ select,textarea,input[type="text"],input[type="password"],input[readonly="readon
  text-align: left;
 }
 #contentHeadLeft {
- background: #FAFCFD url(../Image/asual-headleft.jpg) no-repeat;
+ background: #FAFCFD url(../image/asual-headleft.jpg) no-repeat;
  height: 28px;
  padding-left: 22px;
 }
 #contentHeadCenter {
- background: url(../Image/asual-headcenter.jpg) repeat-x;
+ background: url(../image/asual-headcenter.jpg) repeat-x;
  height: 100%;
  margin: 0 6px;
 }
 #contentHeadRight {
- background: url(../Image/asual-headright.jpg) no-repeat right;
+ background: url(../image/asual-headright.jpg) no-repeat right;
  height: 100%;
  padding-right: 22px;
 }
 #contentBodyLeft
 {
- background: url(../Image/asual-bodyleft.jpg) repeat-y;
+ background: url(../image/asual-bodyleft.jpg) repeat-y;
  padding-left: 22px;
  clear: both;
 }
 #contentBodyCenter {
  height: auto;
- background: url(../Image/asual-bodycenter.jpg);
+ background: url(../image/asual-bodycenter.jpg);
 }
 #contentBodyRight {
  padding-right: 22px;
- background: url(../Image/asual-bodyright.jpg) repeat-y right;
+ background: url(../image/asual-bodyright.jpg) repeat-y right;
 }
 #contentFootLeft {
- background: #FAFCFD url(../Image/asual-footleft.jpg) no-repeat;
+ background: #FAFCFD url(../image/asual-footleft.jpg) no-repeat;
  height: 28px;
  padding-left: 22px;
  clear: both;
 }
 #contentFootCenter {
- background: url(../Image/asual-footcenter.jpg) repeat-x;
+ background: url(../image/asual-footcenter.jpg) repeat-x;
  height: 100%;
  margin: 0 6px;
 }
 #contentFootRight {
- background: url(../Image/asual-footright.jpg) no-repeat right;
+ background: url(../image/asual-footright.jpg) no-repeat right;
  height: 100%;
  padding-right: 22px;
 }
 #content {
- background: #D5DEED url(../Image/asual-content.jpg) repeat-x;
+ background: #D5DEED url(../image/asual-content.jpg) repeat-x;
  width: auto;
  height: auto;
  margin: 0;

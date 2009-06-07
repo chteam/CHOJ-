@@ -36,9 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VJSharp", "VJSharp", "{FE60
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VJSCodeProvider", "VJSharpCodeProvider\VJSCodeProvider.csproj", "{EF7A8C41-FC94-4EE7-A35B-36CEE08C8B3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHOJ.Content", "CHOJ.Content\CHOJ.Content.csproj", "{7DD74502-BBFD-4A83-AA83-9ECF8206A2F7}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
@@ -66,6 +68,9 @@ Global
 		SccProjectTopLevelParentUniqueName7 = CHOJ.sln
 		SccProjectName7 = VJSharpCodeProvider
 		SccLocalPath7 = VJSharpCodeProvider
+		SccProjectUniqueName8 = CHOJ.Content\\CHOJ.Content.csproj
+		SccProjectName8 = CHOJ.Content
+		SccLocalPath8 = CHOJ.Content
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +105,10 @@ Global
 		{EF7A8C41-FC94-4EE7-A35B-36CEE08C8B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF7A8C41-FC94-4EE7-A35B-36CEE08C8B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF7A8C41-FC94-4EE7-A35B-36CEE08C8B3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD74502-BBFD-4A83-AA83-9ECF8206A2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD74502-BBFD-4A83-AA83-9ECF8206A2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD74502-BBFD-4A83-AA83-9ECF8206A2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD74502-BBFD-4A83-AA83-9ECF8206A2F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
