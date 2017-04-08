@@ -68,7 +68,7 @@ EOF
 2
 -----------------------------------------
 C:(编译后exe文件约为15KB,exe file is about 15KB)
-··· c++
+```c++
 #include <stdio.h>
 int main()/* C-C++   程序的主函数最好为int否则编译可能通不过，建议使用DEVC++ */
 {
@@ -76,10 +76,10 @@ int main()/* C-C++   程序的主函数最好为int否则编译可能通不过�
     while(scanf("%d",&a) != EOF)/* 输入以EOF结尾，WIN下输入方式为Ctrl+Z */
         printf("%d\n",a+1);
 }
-···	
+```	
 	
 	C++:(编译后exe文件约为415KB,exe file is about 415KB)
-··· c++
+``` c++
 #include <iostream>
 using namespace std;
 
@@ -89,11 +89,11 @@ int main()
     while(cin >> x)
         cout << x+1 <<endl;
 }
-···
+```
 
 	C# on .net 2.0(C# 2.0):(编译后exe文件约为3KB,exe file is about 3KB)
 
-···c#
+```c#
 using System;
 class Program {
 	static void Main(string[] args) {
@@ -107,11 +107,11 @@ class Program {
 		}
 	}
 }
-···
+```
 	
 	VB.net on .net 2.0(VB 8.0):(编译后exe文件约为2KB exe file is about 2KB)
 
-···vb.net
+```vb.net
 Module pro1
     Sub Main()
         Dim s As String
@@ -124,11 +124,11 @@ Module pro1
         End While
     End Sub
 End Module
-···
+```
 
 J# on .net 2.0:(编译后exe文件约为2KB , exe file is about 2KB)
 
-···java
+```java
 import System.Console;
 public class Program
 {
@@ -143,4 +143,4 @@ public class Program
         }
     }
 }
-···
+```
