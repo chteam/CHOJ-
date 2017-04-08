@@ -27,7 +27,7 @@ C# / VB.net /C++/C /JScript/J#
 
 
 
-## This Programme:
+## This Programe:
 *Support*
 .net 2.0
 sql server 2005 express
@@ -48,13 +48,15 @@ Please DownLoad this Config file after Download the Application http://www.codep
 
 
 
-!! 我们为您提供了多种编译器,There are sevevral Compiler for you.
-g++ /c++ : 可以编译C语言或C++  代码。for c++ or C language
-gcc: 可以编译C语言。for C language
-csc: For C# 2.0 Language runat   可以编译 .net framework 2.0/1.1 下运行的C#
-vbc:For Vb.net(7.10)/Vb 8.0 Language runat可以编译  .net framework 2.0/1.1 下运行的VB.net
-vjc: For J#.net(it's the update Language of Visual J++ 6.0) runat可以编译  .net framework 2.0 下运行的J#
-jsc: For JScript 8.0/JScript 7.10 Language runat可以编译  .net framework 2.0/1.1下运行的JScript
+## 我们为您提供了多种编译器,There are sevevral Compiler for you.
+
+* g++ /c++ : 可以编译C语言或C++  代码。for c++ or C language
+* gcc: 可以编译C语言。for C language
+* csc: For C# 2.0 Language runat   可以编译 .net framework 2.0/1.1 下运行的C#
+* vbc:For Vb.net(7.10)/Vb 8.0 Language runat可以编译  .net framework 2.0/1.1 下运行的VB.net
+* vjc: For J#.net(it's the update Language of Visual J++ 6.0) runat可以编译  .net framework 2.0 下运行的J#
+* jsc: For JScript 8.0/JScript 7.10 Language runat可以编译  .net framework 2.0/1.1下运行的JScript
+
 例如：e.g.
 ----------------------------------------
 例:题为"加法"
@@ -66,7 +68,7 @@ EOF
 2
 -----------------------------------------
 C:(编译后exe文件约为15KB,exe file is about 15KB)
-{code:c++}
+··· c++
 #include <stdio.h>
 int main()/* C-C++   程序的主函数最好为int否则编译可能通不过，建议使用DEVC++ */
 {
@@ -74,10 +76,10 @@ int main()/* C-C++   程序的主函数最好为int否则编译可能通不过�
     while(scanf("%d",&a) != EOF)/* 输入以EOF结尾，WIN下输入方式为Ctrl+Z */
         printf("%d\n",a+1);
 }
-{code:c++}	
+···	
 	
 	C++:(编译后exe文件约为415KB,exe file is about 415KB)
-{code:c++}
+··· c++
 #include <iostream>
 using namespace std;
 
@@ -87,11 +89,11 @@ int main()
     while(cin >> x)
         cout << x+1 <<endl;
 }
-{code:c++}
+···
 
 	C# on .net 2.0(C# 2.0):(编译后exe文件约为3KB,exe file is about 3KB)
 
-{code:c#}
+···c#
 using System;
 class Program {
 	static void Main(string[] args) {
@@ -105,11 +107,11 @@ class Program {
 		}
 	}
 }
-{code:c#}
+···
 	
 	VB.net on .net 2.0(VB 8.0):(编译后exe文件约为2KB exe file is about 2KB)
 
-{code:vb.net}
+···vb.net
 Module pro1
     Sub Main()
         Dim s As String
@@ -122,11 +124,11 @@ Module pro1
         End While
     End Sub
 End Module
-{code:vb.net}
+···
 
 J# on .net 2.0:(编译后exe文件约为2KB , exe file is about 2KB)
 
-{code:java}
+···java
 import System.Console;
 public class Program
 {
@@ -141,4 +143,4 @@ public class Program
         }
     }
 }
-{code:java}
+···
