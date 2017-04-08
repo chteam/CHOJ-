@@ -1,14 +1,16 @@
-Blog: [url:http://chsword.cnblogs.com/]
-[url:@chsword on WeiBo.com|http://weibo.com/chsword]
+Blog: http://chsword.cnblogs.com/
 
-! CHOJ# 2.0 Beta2
+@chsword on WeiBo.com http://weibo.com/chsword
+
+## CHOJ# 2.0 Beta2
+
 * Azure支持
 * Live Id 支持
 * 编译时状态支持
 * 增加可扩展库
 * Wiki页面支持
 
-! CHOJ# 2.0 Beta 发布
+## CHOJ# 2.0 Beta 发布
 主要增加了程序的扩展性和稳定性
 * 做为OJ程序的健壮性，增加了沙箱(sandbox)控制，但并未因此取消危险代码检测
 * 升级至ASP.NET MVC框架
